@@ -9,7 +9,8 @@ private var calendar: Calendar {
     return calendar
 }
 
-private let noon = Date(timeIntervalSince1970: 1_800_000_000 - 1_800_000_000 % 86_400 + 12 * 3600)
+// 2027-01-15 12:00 UTC (1_799_971_200 is midnight).
+private let noon = Date(timeIntervalSince1970: 1_799_971_200 + 12 * 3600)
 
 private func day(_ offset: Int) -> Date {
     calendar.date(byAdding: .day, value: offset, to: calendar.startOfDay(for: noon))!
