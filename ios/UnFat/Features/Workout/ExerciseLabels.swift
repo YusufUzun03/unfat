@@ -57,7 +57,7 @@ enum WorkoutFormat {
             return value.formatted(.units(allowed: [.seconds], width: .abbreviated))
         }
         return value.formatted(
-            .units(allowed: [.hours, .minutes], width: .abbreviated, maximumUnitCount: 2, zeroValueUnitsDisplay: .hide)
+            .units(allowed: [.hours, .minutes], width: .abbreviated, maximumUnitCount: 2, zeroValueUnits: .hide)
         )
     }
 
