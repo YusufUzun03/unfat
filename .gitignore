@@ -6,3 +6,6 @@ DerivedData/
 *.ipa
 *.p8
 .env
+*.mobileprovision
+*.p12
+GoogleService-Info.plist
