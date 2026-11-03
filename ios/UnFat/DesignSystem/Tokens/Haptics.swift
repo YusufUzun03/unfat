@@ -7,6 +7,8 @@ enum Haptics {
     static var foodLogged: SensoryFeedback { .success }
     /// A workout set was checked.
     static var setChecked: SensoryFeedback { .impact(weight: .light) }
+    /// The rest timer reached zero.
+    static var restFinished: SensoryFeedback { .success }
     /// A keypad key was pressed.
     static var keyTap: SensoryFeedback { .selection }
 }

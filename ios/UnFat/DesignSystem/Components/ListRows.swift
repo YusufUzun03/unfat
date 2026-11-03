@@ -60,22 +60,45 @@ struct SetRowHeader: View {
 }
 
 /// Workout set row: Set · kg · Reps · check circle (done = accent). Light impact on check.
+/// With `onEditWeight` / `onEditReps` the kg and reps values become tap targets (keypad sheet).
 struct SetRow: View {
     let number: Int
     let weightKg: Double
     let reps: Int
     let isDone: Bool
+    let onEditWeight: (() -> Void)?
+    let onEditReps: (() -> Void)?
     let onToggle: () -> Void
+
+    init(
+        number: Int,
+        weightKg: Double,
+        reps: Int,
+        isDone: Bool,
+        onEditWeight: (() -> Void)? = nil,
+        onEditReps: (() -> Void)? = nil,
+        onToggle: @escaping () -> Void
+    ) {
+        self.number = number
+        self.weightKg = weightKg
+        self.reps = reps
+        self.isDone = isDone
+        self.onEditWeight = onEditWeight
+        self.onEditReps = onEditReps
+        self.onToggle = onToggle
+    }
 
     var body: some View {
         HStack(spacing: Spacing.sm) {
             Text(number, format: .number)
                 .foregroundStyle(Palette.secondaryLabel)
                 .frame(width: SetColumns.set, alignment: .leading)
-            Text(weightKg, format: .number.precision(.fractionLength(0...1)))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text(reps, format: .number)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            valueCell(action: onEditWeight) {
+                Text(weightKg, format: .number.precision(.fractionLength(0...1)))
+            }
+            valueCell(action: onEditReps) {
+                Text(reps, format: .number)
+            }
             Button(action: onToggle) {
                 Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
@@ -94,6 +117,21 @@ struct SetRow: View {
             !oldValue && newValue
         }
         .motion(.standard, value: isDone)
+    }
+
+    @ViewBuilder
+    private func valueCell<Content: View>(action: (() -> Void)?, @ViewBuilder content: () -> Content) -> some View {
+        if let action {
+            Button(action: action) {
+                content()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+        } else {
+            content()
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }
 
