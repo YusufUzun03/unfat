@@ -14,19 +14,19 @@
 
 ## ios/
 - `ios/project.yml` — XcodeGen spec: targets `UnFat`, `UnFatWidgets`, `UnFatTests`, local package `UnFatCore`; Info.plist keys and entitlements (XcodeGen writes `UnFat/Info.plist`, `UnFat/UnFat.entitlements`, `UnFatWidgets/Info.plist`, `UnFatWidgets/UnFatWidgets.entitlements` at generate time)
-- `ios/UnFat/App/UnFatApp.swift` — `@main` app entry
+- `ios/UnFat/App/UnFatApp.swift` — `@main` app entry; builds the `WorkoutLiveActivityController`, installs the `WorkoutIntentBridge` handler, puts the controller in the environment, syncs the activity when the scene becomes active
 - `ios/UnFat/App/RootView.swift` — iOS 26 `TabView`: Bugün, Antrenman, İlerleme, search-role Ekle tab that opens the add sheet
 - `ios/UnFat/App/AppTab.swift` — tab identifiers
 - `ios/UnFat/App/LaunchRouter.swift` — DEBUG-only `-UNFAT_SCREEN <name>` parser; `LaunchRoute` lists screenshot routes
 - `ios/UnFat/Features/Today/TodayScreen.swift` — Today tab: calorie ring + macro bars, today's entries (tap edit, swipe delete, context-menu favorite), empty state with copy yesterday
-- `ios/UnFat/Features/Workout/WorkoutScreen.swift` — Workout tab: programs (days start a session), template list, empty session, history, resume bar; owns the `RestTimerController` and the full-screen session cover
-- `ios/UnFat/Features/Workout/ActiveSessionView.swift` — active session: sets with prefill hint, keypad value sheet, rest timer bar, finish/discard dialog, in-place summary
+- `ios/UnFat/Features/Workout/WorkoutScreen.swift` — Workout tab: programs (days start a session), template list, empty session, history, resume bar; takes the shared `RestTimerController` from the `WorkoutLiveActivityController` environment object and owns the full-screen session cover; syncs the Live Activity on start/close
+- `ios/UnFat/Features/Workout/ActiveSessionView.swift` — active session: sets with prefill hint, keypad value sheet, rest timer bar, finish/discard dialog, in-place summary; syncs the Live Activity after every edit
 - `ios/UnFat/Features/Workout/SessionSummaryView.swift` — finish summary (duration, volume, kcal, PRs) and `SessionDetailView` for history
 - `ios/UnFat/Features/Workout/ProgramEditorView.swift` — program, day and planned-exercise editors
 - `ios/UnFat/Features/Workout/ExercisePickerView.swift` — seed + custom exercise picker with search and muscle filter, custom exercise sheet
 - `ios/UnFat/Features/Workout/ExerciseLabels.swift` — Turkish titles for muscle, equipment, PR kind; workout number formatting
 - `ios/UnFat/Services/WorkoutSessionService.swift` — session logic: prefill/volume math, start/edit/finish, summary with PRs (UnFatCore), program creation from templates
-- `ios/UnFat/Services/RestTimerController.swift` — date-based rest timer math + `@Observable` controller; `onEvent` is the seam for the Live Activity (task 12)
+- `ios/UnFat/Services/RestTimerController.swift` — date-based rest timer math + `@Observable` controller; `onEvent` feeds the Live Activity controller; `restore(start:end:now:)` brings back a rest saved in the App Group (no event)
 - `ios/UnFat/Services/ProgramTemplates.swift` — Full body 3 / Üst-Alt 4 / İtme-Çekme-Bacak 6 day templates from seed exercise ids
 - `ios/UnFat/Services/ExerciseCatalog.swift` — `ExerciseItem` + seed/custom catalog with Turkish-folded search
 - `ios/UnFat/Debug/WorkoutDebug.swift` — DEBUG fixtures and views for `workout-empty`, `program-editor`, `exercise-picker`, `session`, `session-summary`
@@ -50,13 +50,21 @@
 - `ios/UnFat/Resources/Localizable.xcstrings` — String Catalog, source language tr
 - `ios/UnFat/Resources/Assets.xcassets` — `AccentColor` (#FF6A3D, light + dark), `AppIcon` (placeholder 1024 PNG, plain accent color)
 - `ios/Shared/AppGroup.swift` — App Group id and container URL (app + widgets)
-- `ios/UnFatWidgets/UnFatWidgetBundle.swift` — `@main` widget bundle
+- `ios/UnFatWidgets/UnFatWidgetBundle.swift` — `@main` widget bundle (calorie widget + workout Live Activity)
 - `ios/UnFatWidgets/CalorieWidget.swift` — calorie widget: `TimelineProvider` (reads the App Group snapshot; entries now + next midnight, `.atEnd`), entry view per family, `StaticConfiguration` for small, medium, accessoryCircular
 - `ios/Shared/Widgets/CalorieWidgetViews.swift` — `SmallCalorieWidgetView`, `MediumCalorieWidgetView`, `CircularCalorieWidgetView`, widget ring and macro rows, `WidgetPalette` (accent defined here, no asset catalog in the extension)
 - `ios/Shared/Widgets/WidgetSnapshotDisplay.swift` — pure rollover (`snapshot(stored:now:)`), `nextMidnight`, `WidgetSnapshot` display helpers and sample
-- `ios/Shared/Widgets/Widgets.xcstrings` — String Catalog table `Widgets` for widget strings; compiled into both app and extension (own table name, so no clash with the app's `Localizable`)
+- `ios/Shared/Widgets/Widgets.xcstrings` — String Catalog table `Widgets` for widget strings; compiled into both app and extension (own table name, so no clash with the app's `Localizable`); also holds the Live Activity strings
 - `ios/UnFat/Debug/WidgetGalleryDebug.swift` — DEBUG `gallery-widgets` screen: widget views at real size in normal, over-target, no-target states
 - `ios/UnFatTests/WidgetDisplayTests.swift` — rollover, no-target, kcal left/over, next midnight (incl. DST)
+- `ios/Shared/LiveActivity/WorkoutActivityAttributes.swift` — `WorkoutActivityAttributes` + `ContentState` (exercise, set n / m, rest window, over and can-complete flags), `WorkoutRestPhase`, `restPhase(isStale:now:)`, `staleDate`, samples (app + widget extension)
+- `ios/Shared/LiveActivity/WorkoutLiveActivityViews.swift` — Lock Screen banner and Dynamic Island pieces (compact, minimal, expanded) in resting / not resting / rest over; buttons are `Button(intent:)`; strings in table `Widgets`
+- `ios/Shared/LiveActivity/WorkoutIntents.swift` — `AddRestTimeIntent`, `SkipRestIntent`, `CompleteSetIntent` (`LiveActivityIntent`, run in the app process), `WorkoutIntentAction`, `@MainActor WorkoutIntentBridge` (queues actions until the app installs its handler)
+- `ios/UnFatWidgets/WorkoutLiveActivity.swift` — `ActivityConfiguration` for `WorkoutActivityAttributes`, registered in `UnFatWidgetBundle`
+- `ios/UnFat/Services/WorkoutLiveActivityLogic.swift` — pure parts: next open set, content state, activity reconcile (end orphans, update, request, dismissed), notification plan, relaunch recovery, `WorkoutRestStateStore` (`workout-rest-state.json` in the App Group)
+- `ios/UnFat/Services/WorkoutLiveActivityController.swift` — `WorkoutLiveActivityController` (owns the rest timer; starts/updates/ends the activity from the active session, answers the intent buttons through the database, saves the running rest, orphan cleanup at launch) and `WorkoutRestNotification` (local "Dinlenme bitti" notification)
+- `ios/UnFat/Debug/LiveActivityGalleryDebug.swift` — DEBUG `gallery-live-activity` screen: banner and island views in resting, not resting, rest over (island and Lock Screen frames are mocks)
+- `ios/UnFatTests/LiveActivityTests.swift` — next set, content state, phase and stale date, reconcile, notification plan, relaunch recovery and state file, rest timer restore, intent bridge queue, controller (not live) on an in-memory store, gallery route
 - `ios/UnFatTests/LaunchRouterTests.swift` — hosted unit test (launch argument parsing)
 - `ios/UnFatCore/Package.swift` — local Swift package (tools 6.0, iOS 26 + macOS 15)
 - `ios/UnFatCore/Sources/UnFatCore/Profile.swift` — sex, activity multipliers, goal plan, validated profile

@@ -40,6 +40,7 @@ struct ActiveSessionView: View {
     let onClose: () -> Void
 
     @Environment(\.modelContext) private var context
+    @Environment(WorkoutLiveActivityController.self) private var live
     @Query(sort: \CustomExercise.createdAt) private var customExercises: [CustomExercise]
     @State private var catalog = ExerciseCatalog(seed: .shared)
     @State private var previousByRef: [String: [SetValue]] = [:]
@@ -162,6 +163,9 @@ struct ActiveSessionView: View {
         .task(id: session.sortedExercises.map(\.exerciseRef)) {
             loadPrevious()
         }
+        .task {
+            live.requestNotificationAuthorization()
+        }
         .onChange(of: customExercises.map(\.uuid), initial: true) {
             catalog = ExerciseCatalog(seed: .shared, custom: customExercises.map(ExerciseItem.init(custom:)))
         }
@@ -242,10 +246,11 @@ struct ActiveSessionView: View {
 
     private func toggle(_ log: SetLog, in exercise: SessionExercise) {
         let done = WorkoutSessionService.toggleSet(log)
-        save()
+        // Start the rest before saving, so the Live Activity updates once instead of twice.
         if done {
             rest.start(seconds: exercise.restSeconds)
         }
+        save()
     }
 
     private func apply(_ value: Double, to edit: SetEdit) {
@@ -259,6 +264,7 @@ struct ActiveSessionView: View {
     private func addExercise(_ item: ExerciseItem) {
         do {
             try WorkoutSessionService.addExercise(item, to: session, in: context)
+            live.sync()
         } catch {
             saveFailed = true
         }
@@ -268,6 +274,7 @@ struct ActiveSessionView: View {
         do {
             let summary = try WorkoutSessionService.finish(session, catalog: catalog, in: context)
             rest.skip()
+            live.sync()
             finishedSummary = summary
         } catch {
             saveFailed = true
@@ -285,12 +292,14 @@ struct ActiveSessionView: View {
             saveFailed = true
             return
         }
+        live.sync()
         onClose()
     }
 
     private func save() {
         do {
             try context.save()
+            live.sync()
         } catch {
             saveFailed = true
         }

@@ -1,8 +1,20 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
+    "+15 sn" : {
+      "comment" : "Live Activity button: add 15 seconds to the running rest timer."
+    },
     "Bugünkü kalori ve makroların." : {
       "comment" : "Calorie widget description in the widget gallery."
+    },
+    "Dinlenme" : {
+      "comment" : "Live Activity label while the rest timer runs."
+    },
+    "Dinlenme bitti" : {
+      "comment" : "Live Activity label when the rest timer has run out."
+    },
+    "Geç" : {
+      "comment" : "Live Activity button: skip the rest timer."
     },
     "Hedefini belirle" : {
       "comment" : "Widget state before a calorie target exists."
@@ -15,6 +27,12 @@
     },
     "Protein" : {
       "comment" : "Macro name."
+    },
+    "Set %lld / %lld" : {
+      "comment" : "Live Activity set counter: current set number, then total sets of the exercise."
+    },
+    "Set tamam" : {
+      "comment" : "Live Activity button: mark the next open set as done."
     },
     "Yağ" : {
       "comment" : "Macro name (fat)."

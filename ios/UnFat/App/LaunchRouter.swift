@@ -34,6 +34,8 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case galleryTuning = "gallery-tuning"
     /// Widget views at real size (small, medium, circular) in normal, over and no-target states.
     case galleryWidgets = "gallery-widgets"
+    /// Workout Live Activity views (Lock Screen banner, Dynamic Island) in resting, idle and rest-over states.
+    case galleryLiveActivity = "gallery-live-activity"
     case onboardingSex = "onboarding-sex"
     case onboardingBody = "onboarding-body"
     case onboardingWeight = "onboarding-weight"
@@ -68,6 +70,7 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .gallery3: .screen(.gallery(firstSection: .restTimer, showsTuning: false))
         case .galleryTuning: .screen(.gallery(firstSection: .ring, showsTuning: true))
         case .galleryWidgets: .screen(.widgetGallery)
+        case .galleryLiveActivity: .screen(.liveActivityGallery)
         case .onboardingSex: .screen(.onboarding(.sex))
         case .onboardingBody: .screen(.onboarding(.body))
         case .onboardingWeight: .screen(.onboarding(.weight))

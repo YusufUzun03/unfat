@@ -75,6 +75,15 @@ final class RestTimerController {
         }
     }
 
+    /// Brings back a rest that was running when the app was killed (read from the App Group by the
+    /// Live Activity controller). Sends no event: the activity and the notification already show it.
+    /// Ignored when the window is broken or already over.
+    func restore(start: Date, end: Date, now: Date = .now) {
+        guard start <= end, end > now else { return }
+        startDate = start
+        endDate = end
+    }
+
     /// The "Geç" button.
     func skip() {
         guard isRunning else { return }

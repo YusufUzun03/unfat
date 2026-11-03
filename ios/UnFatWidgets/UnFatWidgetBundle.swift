@@ -5,5 +5,6 @@ import WidgetKit
 struct UnFatWidgetBundle: WidgetBundle {
     var body: some Widget {
         CalorieWidget()
+        WorkoutLiveActivity()
     }
 }

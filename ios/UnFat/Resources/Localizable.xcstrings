@@ -160,6 +160,9 @@
     "Dinlenme" : {
       "comment" : "Program editor."
     },
+    "Dinlenme bitti" : {
+      "comment" : "Local notification title when the rest timer ends (Live Activity)."
+    },
     "Direnç bandı" : {
       "comment" : "Equipment name."
     },
@@ -426,6 +429,9 @@
     },
     "Süre" : {
       "comment" : "Session summary."
+    },
+    "Sıradaki: %@" : {
+      "comment" : "Local notification body when the rest timer ends: the name of the next exercise."
     },
     "Sırt" : {
       "comment" : "Muscle group name (exercise picker, session header)."

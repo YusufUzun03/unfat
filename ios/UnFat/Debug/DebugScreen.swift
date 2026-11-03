@@ -10,6 +10,7 @@ enum DebugScreen: Hashable, Sendable, Identifiable {
     case foodLog(FoodLogDebugScreen)
     case barcode(BarcodeDebugScreen)
     case widgetGallery
+    case liveActivityGallery
 
     var id: Self { self }
 }
@@ -33,6 +34,8 @@ struct DebugScreenView: View {
             BarcodeDebugView(kind: kind)
         case .widgetGallery:
             WidgetGalleryView()
+        case .liveActivityGallery:
+            LiveActivityGalleryView()
         }
     }
 }

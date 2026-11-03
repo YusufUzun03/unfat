@@ -6,8 +6,8 @@ struct WorkoutScreen: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Program.order) private var programs: [Program]
     @Query(sort: \WorkoutSession.startedAt, order: .reverse) private var sessions: [WorkoutSession]
-    /// Owned here so the rest keeps running while the session is minimized.
-    @State private var rest = RestTimerController()
+    /// Owns the rest timer (so it keeps running while the session is minimized) and the Live Activity.
+    @Environment(WorkoutLiveActivityController.self) private var live
     @State private var presentedSession: WorkoutSession?
     @State private var editingProgram: Program?
     @State private var pendingStart: PendingStart?
@@ -21,6 +21,8 @@ struct WorkoutScreen: View {
     }
 
     private static let historyLimit = 20
+
+    private var rest: RestTimerController { live.rest }
 
     private var activeSession: WorkoutSession? {
         sessions.first { $0.isActive }
@@ -252,6 +254,8 @@ struct WorkoutScreen: View {
                 in: context
             )
             rest.skip()
+            live.requestNotificationAuthorization()
+            live.sync()
             presentedSession = session
         } catch {
             errorShown = true
@@ -269,6 +273,7 @@ struct WorkoutScreen: View {
                 let catalog = ExerciseCatalog(seed: .shared, custom: custom.map(ExerciseItem.init(custom:)))
                 _ = try WorkoutSessionService.finish(session, catalog: catalog, in: context)
             }
+            live.sync()
         } catch {
             errorShown = true
         }
