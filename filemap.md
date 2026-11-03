@@ -18,10 +18,28 @@
 - `ios/UnFat/App/RootView.swift` — iOS 26 `TabView`: Bugün, Antrenman, İlerleme, search-role Ekle tab that opens the add sheet
 - `ios/UnFat/App/AppTab.swift` — tab identifiers
 - `ios/UnFat/App/LaunchRouter.swift` — DEBUG-only `-UNFAT_SCREEN <name>` parser; `LaunchRoute` lists screenshot routes
-- `ios/UnFat/Features/Today/TodayScreen.swift` — Today placeholder (large title)
-- `ios/UnFat/Features/Workout/WorkoutScreen.swift` — Workout placeholder
+- `ios/UnFat/Features/Today/TodayScreen.swift` — Today tab: calorie ring + macro bars, today's entries (tap edit, swipe delete, context-menu favorite), empty state with copy yesterday
+- `ios/UnFat/Features/Workout/WorkoutScreen.swift` — Workout tab: programs (days start a session), template list, empty session, history, resume bar; owns the `RestTimerController` and the full-screen session cover
+- `ios/UnFat/Features/Workout/ActiveSessionView.swift` — active session: sets with prefill hint, keypad value sheet, rest timer bar, finish/discard dialog, in-place summary
+- `ios/UnFat/Features/Workout/SessionSummaryView.swift` — finish summary (duration, volume, kcal, PRs) and `SessionDetailView` for history
+- `ios/UnFat/Features/Workout/ProgramEditorView.swift` — program, day and planned-exercise editors
+- `ios/UnFat/Features/Workout/ExercisePickerView.swift` — seed + custom exercise picker with search and muscle filter, custom exercise sheet
+- `ios/UnFat/Features/Workout/ExerciseLabels.swift` — Turkish titles for muscle, equipment, PR kind; workout number formatting
+- `ios/UnFat/Services/WorkoutSessionService.swift` — session logic: prefill/volume math, start/edit/finish, summary with PRs (UnFatCore), program creation from templates
+- `ios/UnFat/Services/RestTimerController.swift` — date-based rest timer math + `@Observable` controller; `onEvent` is the seam for the Live Activity (task 12)
+- `ios/UnFat/Services/ProgramTemplates.swift` — Full body 3 / Üst-Alt 4 / İtme-Çekme-Bacak 6 day templates from seed exercise ids
+- `ios/UnFat/Services/ExerciseCatalog.swift` — `ExerciseItem` + seed/custom catalog with Turkish-folded search
+- `ios/UnFat/Debug/WorkoutDebug.swift` — DEBUG fixtures and views for `workout-empty`, `program-editor`, `exercise-picker`, `session`, `session-summary`
+- `ios/UnFatTests/WorkoutSessionTests.swift` — prefill, volume, summary kcal, PR integration, rest timer, templates, catalog search, workout route parsing
 - `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress placeholder
-- `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet placeholder
+- `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet: action rows, recents, favorites, search; pushes `AddRoute` screens (editor, quick kcal, custom food)
+- `ios/UnFat/Features/FoodLog/EntryEditorView.swift` — amount editor (NumberRoll summary, serving chips, keypad, time) for add and edit; `EntryEditSheet` wrapper for timeline edits
+- `ios/UnFat/Features/FoodLog/QuickKcalView.swift` — quick kcal keypad + optional name (add and edit)
+- `ios/UnFat/Features/FoodLog/CustomFoodForm.swift` — custom food form (per-100 g values, Turkish comma, optional serving)
+- `ios/UnFat/Features/FoodLog/FoodLogComponents.swift` — `FoodFormat`, `FoodChoiceRow`, `AddActionLabel`, `EntryTimeRow`, `EditorCard`, `EntryEditMode`, `refreshWidgetSnapshot`
+- `ios/UnFat/Services/FoodLogService.swift` — testable food log logic: day totals, recents/favorites/search, portion math, snapshot entries, log/update/delete, copy yesterday, custom foods
+- `ios/UnFat/Debug/FoodLogDebug.swift` — DEBUG fixtures and views for `today-empty`, `today-over`, `add-search`, `entry-editor`, `quick-kcal`, `custom-food`; `addYesterday` also feeds the shared fixture container
+- `ios/UnFatTests/FoodLogServiceTests.swift` — day totals, recents, search, favorites, portion math, snapshots, copy yesterday, input parsing
 - `ios/UnFat/Resources/Localizable.xcstrings` — String Catalog, source language tr
 - `ios/UnFat/Resources/Assets.xcassets` — `AccentColor` (#FF6A3D, light + dark), `AppIcon` (placeholder 1024 PNG, plain accent color)
 - `ios/Shared/AppGroup.swift` — App Group id and container URL (app + widgets)

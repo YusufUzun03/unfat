@@ -6,6 +6,8 @@ enum DebugScreen: Hashable, Sendable, Identifiable {
     case gallery(firstSection: GallerySection, showsTuning: Bool)
     case onboarding(OnboardingStep)
     case goalEditor
+    case workout(WorkoutDebugScreen)
+    case foodLog(FoodLogDebugScreen)
 
     var id: Self { self }
 }
@@ -21,6 +23,10 @@ struct DebugScreenView: View {
             OnboardingDebugView(step: step)
         case .goalEditor:
             GoalEditorDebugView()
+        case let .workout(kind):
+            WorkoutDebugView(kind: kind)
+        case let .foodLog(kind):
+            FoodLogDebugView(kind: kind)
         }
     }
 }

@@ -10,11 +10,26 @@
     "%@ kg" : {
       "comment" : "Weekly rate chip title."
     },
+    "%lld egzersiz" : {
+      "comment" : "Program editor."
+    },
     "%lld g" : {
       "comment" : "Macro target in grams."
     },
+    "%lld gün" : {
+      "comment" : "Workout tab."
+    },
+    "%lld sn" : {
+      "comment" : "Program editor."
+    },
     "+15 sn" : {
       "comment" : "Rest timer button: add 15 seconds."
+    },
+    "100 g başına" : {
+      "comment" : "Custom food form section header: nutrition per 100 g."
+    },
+    "Ad" : {
+      "comment" : "Quick kcal name field label."
     },
     "Aktivite" : {
       "comment" : "Onboarding step title: activity level."
@@ -25,8 +40,20 @@
     "Antrenman" : {
       "comment" : "Tab title and navigation title of the workout screen."
     },
+    "Antrenman bitirilsin mi?" : {
+      "comment" : "Active session."
+    },
+    "Antrenmanı sil" : {
+      "comment" : "Active session."
+    },
+    "Arka bacak" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
     "Aşırı aktif" : {
       "comment" : "Activity level."
+    },
+    "Barbell" : {
+      "comment" : "Equipment name."
     },
     "Bazal metabolizma hızını hesaplamak için kullanılır (Mifflin-St Jeor denklemi)." : {
       "comment" : "Footnote under the sex options."
@@ -37,8 +64,20 @@
     "Bilgilerin kaydedilirken bir hata oluştu. Tekrar dene." : {
       "comment" : "Alert message when saving fails."
     },
+    "Biseps" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Bitir" : {
+      "comment" : "Active session."
+    },
+    "Bitti" : {
+      "comment" : "Program editor."
+    },
     "Boy" : {
       "comment" : "Wheel picker label: height."
+    },
+    "Boş antrenman başlat" : {
+      "comment" : "Workout tab."
     },
     "Bu hedef, genel olarak önerilen en düşük alımın ya da bazal metabolizma hızının altında. İstersen yine de kullanabilirsin." : {
       "comment" : "Floor warning footnote (never red, never blocks)."
@@ -46,14 +85,38 @@
     "Bugün" : {
       "comment" : "Tab title and navigation title of the today dashboard."
     },
+    "Bugün yediklerin" : {
+      "comment" : "Today tab section header for the day's entries."
+    },
     "Cinsiyet" : {
       "comment" : "Onboarding step title: sex."
     },
     "Devam" : {
       "comment" : "Primary button of onboarding steps 1-5."
     },
+    "Devam eden antrenman" : {
+      "comment" : "Workout tab."
+    },
+    "Devam eden antrenmana dön" : {
+      "comment" : "Workout tab."
+    },
+    "Devam eden bir antrenman var" : {
+      "comment" : "Workout tab."
+    },
+    "Devam et" : {
+      "comment" : "Active session."
+    },
     "Değerlere dokunarak düzenleyebilirsin." : {
       "comment" : "Hint under the targets."
+    },
+    "Dinlenme" : {
+      "comment" : "Program editor."
+    },
+    "Direnç bandı" : {
+      "comment" : "Equipment name."
+    },
+    "Diğer" : {
+      "comment" : "Equipment name."
     },
     "Doğum yılı" : {
       "comment" : "Wheel picker label."
@@ -61,11 +124,59 @@
     "Doğum yılı ve boy" : {
       "comment" : "Onboarding step title: birth year and height."
     },
+    "Dumbbell" : {
+      "comment" : "Equipment name."
+    },
+    "Dünkü %lld kayıt bugüne eklenecek." : {
+      "comment" : "Copy yesterday confirmation message; the number is yesterday's entry count."
+    },
+    "Dünü kopyala" : {
+      "comment" : "Copy yesterday's entries: add sheet row, Today empty state button and confirmation title."
+    },
+    "Düzenle" : {
+      "comment" : "Workout tab."
+    },
+    "Egzersiz" : {
+      "comment" : "Session summary."
+    },
+    "Egzersiz adı" : {
+      "comment" : "Exercise picker."
+    },
+    "Egzersiz ara" : {
+      "comment" : "Exercise picker."
+    },
+    "Egzersiz ekle" : {
+      "comment" : "Exercise picker."
+    },
+    "Egzersiz seçenekleri" : {
+      "comment" : "Active session."
+    },
+    "Egzersizi sil" : {
+      "comment" : "Active session."
+    },
+    "Egzersizler" : {
+      "comment" : "Program editor."
+    },
+    "Ekipman" : {
+      "comment" : "Exercise picker."
+    },
     "Ekle" : {
       "comment" : "Search-role tab that opens the add sheet; add sheet title."
     },
+    "En yüksek ağırlık" : {
+      "comment" : "Personal record kind."
+    },
+    "Enerji" : {
+      "comment" : "Session summary."
+    },
     "Erkek" : {
       "comment" : "Sex option."
+    },
+    "Favoriler" : {
+      "comment" : "Add sheet section: favorite foods."
+    },
+    "Favorilere ekle" : {
+      "comment" : "Entry context menu action."
     },
     "Fiziksel iş ve düzenli antrenman" : {
       "comment" : "Activity level description."
@@ -73,11 +184,35 @@
     "Geç" : {
       "comment" : "Rest timer button: skip the rest."
     },
+    "Geçmiş" : {
+      "comment" : "Workout tab."
+    },
+    "Geçmiş antrenmanlar silinmez." : {
+      "comment" : "Workout tab."
+    },
+    "Göğüs" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Gün %lld" : {
+      "comment" : "Program editor."
+    },
+    "Gün adı" : {
+      "comment" : "Program editor."
+    },
+    "Gün ekle" : {
+      "comment" : "Program editor."
+    },
+    "Günler" : {
+      "comment" : "Program editor."
+    },
     "Günlük hedefin, harcadığın enerjiye eşit olur." : {
       "comment" : "Footnote shown for the maintain goal."
     },
     "Günlük hedefini ve protein miktarını hesaplamak için kullanılır." : {
       "comment" : "Footnote under the weight keypad."
+    },
+    "Hacim" : {
+      "comment" : "Session summary."
     },
     "Hafif aktif" : {
       "comment" : "Activity level."
@@ -109,14 +244,41 @@
     "Hedeflerin" : {
       "comment" : "Onboarding step title: computed targets."
     },
+    "Henüz bir şey eklemedin." : {
+      "comment" : "Today tab empty state."
+    },
+    "Hiç set tamamlanmadı" : {
+      "comment" : "Active session."
+    },
+    "Hızlı kcal" : {
+      "comment" : "Quick calorie entry: add sheet row, screen title and default entry name."
+    },
+    "Kablo" : {
+      "comment" : "Equipment name."
+    },
     "Kadın" : {
       "comment" : "Sex option."
+    },
+    "Kalf" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
     },
     "Kalori" : {
       "comment" : "Target name."
     },
+    "Kalça" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
     "Karbonhidrat" : {
       "comment" : "Macro name (carbohydrate)."
+    },
+    "Kardiyo" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Karın" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Kas grubu" : {
+      "comment" : "Exercise picker."
     },
     "Kaydedilemedi" : {
       "comment" : "Alert title when saving fails."
@@ -124,23 +286,71 @@
     "Kaydet" : {
       "comment" : "Save button of the goal editor."
     },
+    "Kettlebell" : {
+      "comment" : "Equipment name."
+    },
     "Kilo" : {
       "comment" : "Onboarding step title: body weight."
+    },
+    "Kopyala" : {
+      "comment" : "Confirmation button of copy yesterday."
     },
     "Koru" : {
       "comment" : "Goal segment: maintain weight."
     },
+    "Küçült" : {
+      "comment" : "Active session."
+    },
+    "Makine" : {
+      "comment" : "Equipment name."
+    },
     "Masa başı iş, çok az egzersiz" : {
       "comment" : "Activity level description."
+    },
+    "Mevcut antrenmanı bitir ve başlat" : {
+      "comment" : "Workout tab."
+    },
+    "Omuz" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
     },
     "Orta aktif" : {
       "comment" : "Activity level."
     },
+    "Porsiyon (g)" : {
+      "comment" : "Custom food form: serving weight field."
+    },
+    "Porsiyon (isteğe bağlı)" : {
+      "comment" : "Custom food form section header."
+    },
+    "Porsiyon adı" : {
+      "comment" : "Custom food form: serving label field."
+    },
+    "Program adı" : {
+      "comment" : "Program editor."
+    },
+    "Program seçenekleri" : {
+      "comment" : "Workout tab."
+    },
+    "Program silinsin mi?" : {
+      "comment" : "Workout tab."
+    },
+    "Programların" : {
+      "comment" : "Workout tab."
+    },
     "Protein" : {
       "comment" : "Macro name."
     },
+    "Rekorlar" : {
+      "comment" : "Session summary."
+    },
+    "Saat" : {
+      "comment" : "Entry editor time row."
+    },
     "Set" : {
       "comment" : "Column title in the workout set list: set number."
+    },
+    "Set ekle" : {
+      "comment" : "Active session."
     },
     "Set tamam" : {
       "comment" : "Accessibility label of the set check button; Live Activity button."
@@ -151,11 +361,38 @@
     "Sil" : {
       "comment" : "Accessibility label of the keypad delete key."
     },
+    "Son eklenenler" : {
+      "comment" : "Add sheet section: recently logged foods."
+    },
+    "Süre" : {
+      "comment" : "Session summary."
+    },
+    "Sırt" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Tahmini 1TM" : {
+      "comment" : "Personal record kind."
+    },
     "Tamam" : {
       "comment" : "Confirm button."
     },
+    "Tamamlanan set" : {
+      "comment" : "Session summary."
+    },
+    "Tamamlanmayan setler silinir." : {
+      "comment" : "Active session."
+    },
     "Tekrar" : {
       "comment" : "Column title in the workout set list: repetitions."
+    },
+    "Triseps" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Tüm vücut" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Tümü" : {
+      "comment" : "Exercise picker."
     },
     "Vazgeç" : {
       "comment" : "Cancel button."
@@ -163,8 +400,20 @@
     "Ver" : {
       "comment" : "Goal segment: lose weight."
     },
+    "Vücut ağırlığı" : {
+      "comment" : "Equipment name."
+    },
     "Yağ" : {
       "comment" : "Macro name (fat)."
+    },
+    "Yemek adı" : {
+      "comment" : "Custom food form: name field."
+    },
+    "Yemek ara" : {
+      "comment" : "Add sheet search field prompt."
+    },
+    "Yeni program" : {
+      "comment" : "Program editor."
     },
     "g" : {
       "comment" : "Unit: grams."
@@ -187,8 +436,35 @@
     "Çok aktif" : {
       "comment" : "Activity level."
     },
+    "Ön bacak" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Ön kol" : {
+      "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Önceki: %@ × %lld" : {
+      "comment" : "Active session."
+    },
+    "Örnek: 1 kase = 200 g." : {
+      "comment" : "Custom food form footer."
+    },
+    "Özel egzersiz" : {
+      "comment" : "Exercise picker."
+    },
+    "Özel yemek" : {
+      "comment" : "Add sheet action row and custom food form title."
+    },
+    "Özet" : {
+      "comment" : "Session summary."
+    },
     "İlerleme" : {
       "comment" : "Tab title and navigation title of the progress screen."
+    },
+    "Şablondan başla" : {
+      "comment" : "Workout tab."
+    },
+    "Şablonlar" : {
+      "comment" : "Workout tab."
     },
     "−15 sn" : {
       "comment" : "Rest timer button: subtract 15 seconds."

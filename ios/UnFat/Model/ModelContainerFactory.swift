@@ -94,6 +94,7 @@ enum ModelContainerFactory {
             do {
                 let container = try makeInMemory()
                 Fixtures.populate(container.mainContext)
+                FoodLogFixtures.addYesterday(container.mainContext)
                 return container
             } catch {
                 fatalError("Could not create the fixture model container: \(error)")

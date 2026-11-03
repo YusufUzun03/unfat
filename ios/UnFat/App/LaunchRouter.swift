@@ -14,6 +14,12 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case workout
     case progress
     case add
+    case todayEmpty = "today-empty"
+    case todayOver = "today-over"
+    case addSearch = "add-search"
+    case entryEditor = "entry-editor"
+    case quickKcal = "quick-kcal"
+    case customFood = "custom-food"
     /// Design-system gallery, from the top (rings, macro bars).
     case gallery
     /// Gallery from the number roll section (numbers, chips, keypad).
@@ -29,6 +35,11 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case onboardingGoal = "onboarding-goal"
     case onboardingTargets = "onboarding-targets"
     case goalEditor = "goal-editor"
+    case workoutEmpty = "workout-empty"
+    case programEditor = "program-editor"
+    case exercisePicker = "exercise-picker"
+    case session
+    case sessionSummary = "session-summary"
 
     var destination: LaunchDestination {
         switch self {
@@ -36,6 +47,12 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .workout: .tab(.workout)
         case .progress: .tab(.progress)
         case .add: .tab(.add)
+        case .todayEmpty: .screen(.foodLog(.todayEmpty))
+        case .todayOver: .screen(.foodLog(.todayOver))
+        case .addSearch: .screen(.foodLog(.addSearch))
+        case .entryEditor: .screen(.foodLog(.entryEditor))
+        case .quickKcal: .screen(.foodLog(.quickKcal))
+        case .customFood: .screen(.foodLog(.customFood))
         case .gallery: .screen(.gallery(firstSection: .ring, showsTuning: false))
         case .gallery2: .screen(.gallery(firstSection: .numbers, showsTuning: false))
         case .gallery3: .screen(.gallery(firstSection: .restTimer, showsTuning: false))
@@ -47,6 +64,11 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .onboardingGoal: .screen(.onboarding(.goal))
         case .onboardingTargets: .screen(.onboarding(.targets))
         case .goalEditor: .screen(.goalEditor)
+        case .workoutEmpty: .screen(.workout(.empty))
+        case .programEditor: .screen(.workout(.programEditor))
+        case .exercisePicker: .screen(.workout(.exercisePicker))
+        case .session: .screen(.workout(.session))
+        case .sessionSummary: .screen(.workout(.sessionSummary))
         }
     }
 }

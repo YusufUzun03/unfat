@@ -4,6 +4,8 @@ import SwiftUI
 struct RootView: View {
     @State private var selection: AppTab = .today
     @State private var isAddSheetPresented = false
+    /// Bumped when the add sheet logged something; the haptic plays from here because the sheet dismisses itself.
+    @State private var loggedTick = 0
     @Query private var profiles: [UserProfile]
     /// Off for hosted unit tests and DEBUG screenshot routes (fixtures already hold a completed profile).
     private let onboardingGateEnabled: Bool
@@ -68,8 +70,9 @@ struct RootView: View {
             }
         }
         .sheet(isPresented: $isAddSheetPresented) {
-            AddSheet()
+            AddSheet(onLogged: { loggedTick += 1 })
         }
+        .sensoryFeedback(Haptics.foodLogged, trigger: loggedTick)
         .fullScreenCover(isPresented: .constant(needsOnboarding)) {
             OnboardingFlow()
         }
