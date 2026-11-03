@@ -161,8 +161,11 @@ enum DecimalInput {
 }
 
 /// Text fields of the custom food form, validated into numbers.
-struct CustomFoodDraft: Equatable, Sendable {
+struct CustomFoodDraft: Hashable, Sendable {
     var name = ""
+    /// Set when the draft comes from a scanned product; saved with the food.
+    var brand: String?
+    var barcode: String?
     var kcalText = ""
     var proteinText = ""
     var carbsText = ""
@@ -338,17 +341,26 @@ enum FoodLogService {
             }
     }
 
-    /// Custom foods first (best match first), then bundled foods.
+    /// Custom foods first (best match first), then scanned Open Food Facts products from the cache,
+    /// then bundled foods. Cached products without a name or kcal value are left out.
     static func search(
         _ query: String,
         customFoods: [CustomFood],
+        cachedProducts: [CachedProduct] = [],
         catalog: SeedCatalog = .shared,
         limit: Int = 50
     ) -> [LoggableFood] {
         let customIndex = SeedSearchIndex(customFoods.map { SearchableText(name: $0.name) })
         let customs = customIndex.search(query).map { LoggableFood(custom: customFoods[$0]) }
+        let scanned = cachedProducts
+            .filter { !$0.isNotFound && $0.name != nil && $0.kcalPer100g != nil }
+            .sorted { $0.fetchedAt > $1.fetchedAt }
+        let scannedIndex = SeedSearchIndex(scanned.map { SearchableText(name: $0.name ?? "", aliases: [$0.brand].compactMap { $0 }) })
+        let offFoods = scannedIndex.search(query).compactMap {
+            LoggableFood(product: BarcodeLookupService.product(from: scanned[$0]))
+        }
         let seeds = catalog.searchFoods(query, limit: limit).map { LoggableFood(seed: $0) }
-        return customs + seeds
+        return customs + offFoods + seeds
     }
 
     // MARK: - Portion math
@@ -536,6 +548,8 @@ enum FoodLogService {
         let hasServing = !draft.trimmedServingLabel.isEmpty
         let food = CustomFood(
             name: draft.trimmedName,
+            brand: draft.brand,
+            barcode: draft.barcode,
             kcalPer100g: kcal,
             proteinPer100g: protein,
             carbsPer100g: carbs,

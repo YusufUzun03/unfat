@@ -32,19 +32,31 @@
 - `ios/UnFat/Debug/WorkoutDebug.swift` — DEBUG fixtures and views for `workout-empty`, `program-editor`, `exercise-picker`, `session`, `session-summary`
 - `ios/UnFatTests/WorkoutSessionTests.swift` — prefill, volume, summary kcal, PR integration, rest timer, templates, catalog search, workout route parsing
 - `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress placeholder
-- `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet: action rows, recents, favorites, search; pushes `AddRoute` screens (editor, quick kcal, custom food)
+- `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet: action rows, recents, favorites, search; "Barkod tara" row, cached OFF products in search; pushes `AddRoute` screens (editor, quick kcal, custom food, barcode)
 - `ios/UnFat/Features/FoodLog/EntryEditorView.swift` — amount editor (NumberRoll summary, serving chips, keypad, time) for add and edit; `EntryEditSheet` wrapper for timeline edits
 - `ios/UnFat/Features/FoodLog/QuickKcalView.swift` — quick kcal keypad + optional name (add and edit)
-- `ios/UnFat/Features/FoodLog/CustomFoodForm.swift` — custom food form (per-100 g values, Turkish comma, optional serving)
+- `ios/UnFat/Features/FoodLog/CustomFoodForm.swift` — custom food form (per-100 g values, Turkish comma, optional serving, optional prefill with barcode)
 - `ios/UnFat/Features/FoodLog/FoodLogComponents.swift` — `FoodFormat`, `FoodChoiceRow`, `AddActionLabel`, `EntryTimeRow`, `EditorCard`, `EntryEditMode`, `refreshWidgetSnapshot`
-- `ios/UnFat/Services/FoodLogService.swift` — testable food log logic: day totals, recents/favorites/search, portion math, snapshot entries, log/update/delete, copy yesterday, custom foods
+- `ios/UnFat/Services/FoodLogService.swift` — testable food log logic: day totals, recents/favorites/search (custom, cached OFF, seed), portion math, snapshot entries, log/update/delete, copy yesterday, custom foods
 - `ios/UnFat/Debug/FoodLogDebug.swift` — DEBUG fixtures and views for `today-empty`, `today-over`, `add-search`, `entry-editor`, `quick-kcal`, `custom-food`; `addYesterday` also feeds the shared fixture container
 - `ios/UnFatTests/FoodLogServiceTests.swift` — day totals, recents, search, favorites, portion math, snapshots, copy yesterday, input parsing
+- `ios/UnFat/Services/OpenFoodFactsClient.swift` — OFF v3 client: `HTTPTransport`/`OpenFoodFactsFetching` seams, request (User-Agent, 8 s timeout), `OFFParser` (404 = not found, string/number nutrients, kJ fallback, serving grams), `BarcodeValidator`
+- `ios/UnFat/Services/BarcodeLookupService.swift` — lookup order custom food by barcode, fresh `CachedProduct` (30 d found, 1 d not found), network + cache upsert; `LoggableFood(product:)`, `CustomFoodDraft(product:/barcode:)`
+- `ios/UnFat/Features/FoodLog/BarcodeScannerView.swift` — DataScanner with AVFoundation fallback, denied/no-camera state, manual entry
+- `ios/UnFat/Features/FoodLog/ProductCardView.swift` — product card: found, loading, incomplete, not found, error states
+- `ios/UnFat/Features/FoodLog/BarcodeFlowView.swift` — add-sheet barcode screen: scan, lookup, card; routes to editor or prefilled custom food form
+- `ios/UnFat/Debug/BarcodeDebug.swift` — DEBUG fixtures and views for `barcode-scanner`, `product-card`, `product-partial`, `product-not-found`
+- `ios/UnFatTests/OpenFoodFactsTests.swift` — OFF parsing, request shape, fake transport, lookup order and TTLs, cached-product search, barcode routes
 - `ios/UnFat/Resources/Localizable.xcstrings` — String Catalog, source language tr
 - `ios/UnFat/Resources/Assets.xcassets` — `AccentColor` (#FF6A3D, light + dark), `AppIcon` (placeholder 1024 PNG, plain accent color)
 - `ios/Shared/AppGroup.swift` — App Group id and container URL (app + widgets)
 - `ios/UnFatWidgets/UnFatWidgetBundle.swift` — `@main` widget bundle
-- `ios/UnFatWidgets/PlaceholderWidget.swift` — temporary static widget showing "UnFat"
+- `ios/UnFatWidgets/CalorieWidget.swift` — calorie widget: `TimelineProvider` (reads the App Group snapshot; entries now + next midnight, `.atEnd`), entry view per family, `StaticConfiguration` for small, medium, accessoryCircular
+- `ios/Shared/Widgets/CalorieWidgetViews.swift` — `SmallCalorieWidgetView`, `MediumCalorieWidgetView`, `CircularCalorieWidgetView`, widget ring and macro rows, `WidgetPalette` (accent defined here, no asset catalog in the extension)
+- `ios/Shared/Widgets/WidgetSnapshotDisplay.swift` — pure rollover (`snapshot(stored:now:)`), `nextMidnight`, `WidgetSnapshot` display helpers and sample
+- `ios/Shared/Widgets/Widgets.xcstrings` — String Catalog table `Widgets` for widget strings; compiled into both app and extension (own table name, so no clash with the app's `Localizable`)
+- `ios/UnFat/Debug/WidgetGalleryDebug.swift` — DEBUG `gallery-widgets` screen: widget views at real size in normal, over-target, no-target states
+- `ios/UnFatTests/WidgetDisplayTests.swift` — rollover, no-target, kcal left/over, next midnight (incl. DST)
 - `ios/UnFatTests/LaunchRouterTests.swift` — hosted unit test (launch argument parsing)
 - `ios/UnFatCore/Package.swift` — local Swift package (tools 6.0, iOS 26 + macOS 15)
 - `ios/UnFatCore/Sources/UnFatCore/Profile.swift` — sex, activity multipliers, goal plan, validated profile

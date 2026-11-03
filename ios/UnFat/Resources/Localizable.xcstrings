@@ -31,6 +31,9 @@
     "Ad" : {
       "comment" : "Quick kcal name field label."
     },
+    "Adsız ürün" : {
+      "comment" : "Product card title when Open Food Facts has no name."
+    },
     "Aktivite" : {
       "comment" : "Onboarding step title: activity level."
     },
@@ -46,8 +49,14 @@
     "Antrenmanı sil" : {
       "comment" : "Active session."
     },
+    "Ara" : {
+      "comment" : "Manual barcode entry button."
+    },
     "Arka bacak" : {
       "comment" : "Muscle group name (exercise picker, session header)."
+    },
+    "Ayarları aç" : {
+      "comment" : "Button that opens the app's Settings page."
     },
     "Aşırı aktif" : {
       "comment" : "Activity level."
@@ -55,11 +64,38 @@
     "Barbell" : {
       "comment" : "Equipment name."
     },
+    "Barkod" : {
+      "comment" : "Custom food form: read-only barcode row label."
+    },
+    "Barkod numarası" : {
+      "comment" : "Manual barcode field placeholder."
+    },
+    "Barkod tara" : {
+      "comment" : "Add sheet action row and barcode scanner title."
+    },
+    "Barkod: %@" : {
+      "comment" : "Product card not-found description with the barcode number."
+    },
+    "Barkodu elle gir" : {
+      "comment" : "Scanner button: type the barcode instead of scanning."
+    },
+    "Barkodu kameraya hizala." : {
+      "comment" : "Scanner hint over the camera view."
+    },
+    "Barkodu okumak için kameraya izin ver. İstersen barkodu elle de girebilirsin." : {
+      "comment" : "Scanner state message when camera permission is denied."
+    },
     "Bazal metabolizma hızını hesaplamak için kullanılır (Mifflin-St Jeor denklemi)." : {
       "comment" : "Footnote under the sex options."
     },
+    "Bağlantı kurulamadı" : {
+      "comment" : "Product card title when the lookup failed (offline, timeout)."
+    },
     "Başla" : {
       "comment" : "Primary button of the last onboarding step; saves the profile."
+    },
+    "Besin değerleri eksik" : {
+      "comment" : "Product card: Open Food Facts has no calorie value."
     },
     "Bilgilerin kaydedilirken bir hata oluştu. Tekrar dene." : {
       "comment" : "Alert message when saving fails."
@@ -79,8 +115,20 @@
     "Boş antrenman başlat" : {
       "comment" : "Workout tab."
     },
+    "Bu cihazda kamera yok. Barkodu elle girebilirsin." : {
+      "comment" : "Scanner state message when the device has no camera."
+    },
     "Bu hedef, genel olarak önerilen en düşük alımın ya da bazal metabolizma hızının altında. İstersen yine de kullanabilirsin." : {
       "comment" : "Floor warning footnote (never red, never blocks)."
+    },
+    "Bu özel yemek bu barkoda bağlanır." : {
+      "comment" : "Custom food form footer under the barcode row."
+    },
+    "Bu ürün bulunamadı" : {
+      "comment" : "Product card title for an unknown barcode."
+    },
+    "Bu ürünün kalori bilgisi Open Food Facts'te yok. Değerleri kendin girerek ekleyebilirsin." : {
+      "comment" : "Product card explanation for an incomplete product."
     },
     "Bugün" : {
       "comment" : "Tab title and navigation title of the today dashboard."
@@ -135,6 +183,9 @@
     },
     "Düzenle" : {
       "comment" : "Workout tab."
+    },
+    "Düzenleyerek ekle" : {
+      "comment" : "Product card button: open the custom food form with known values."
     },
     "Egzersiz" : {
       "comment" : "Session summary."
@@ -268,6 +319,12 @@
     "Kalça" : {
       "comment" : "Muscle group name (exercise picker, session header)."
     },
+    "Kamera erişimi kapalı" : {
+      "comment" : "Scanner state title when camera permission is denied."
+    },
+    "Kamera kullanılamıyor" : {
+      "comment" : "Scanner state title when the device has no camera."
+    },
     "Karbonhidrat" : {
       "comment" : "Macro name (carbohydrate)."
     },
@@ -315,6 +372,9 @@
     },
     "Orta aktif" : {
       "comment" : "Activity level."
+    },
+    "Porsiyon" : {
+      "comment" : "Product card serving row label."
     },
     "Porsiyon (g)" : {
       "comment" : "Custom food form: serving weight field."
@@ -385,6 +445,12 @@
     "Tekrar" : {
       "comment" : "Column title in the workout set list: repetitions."
     },
+    "Tekrar dene" : {
+      "comment" : "Product card button: repeat the failed lookup."
+    },
+    "Tekrar tara" : {
+      "comment" : "Product card button: go back to the scanner."
+    },
     "Triseps" : {
       "comment" : "Muscle group name (exercise picker, session header)."
     },
@@ -399,6 +465,9 @@
     },
     "Ver" : {
       "comment" : "Goal segment: lose weight."
+    },
+    "Veri: Open Food Facts (ODbL)" : {
+      "comment" : "Product card data attribution line."
     },
     "Vücut ağırlığı" : {
       "comment" : "Equipment name."
@@ -433,6 +502,9 @@
     "kg" : {
       "comment" : "Column title in the workout set list: weight in kilograms."
     },
+    "porsiyon" : {
+      "comment" : "Serving name used for a scanned product's serving (lowercase, shown as '1 porsiyon')."
+    },
     "Çok aktif" : {
       "comment" : "Activity level."
     },
@@ -454,11 +526,23 @@
     "Özel yemek" : {
       "comment" : "Add sheet action row and custom food form title."
     },
+    "Özel yemek olarak ekle" : {
+      "comment" : "Product card button: create a custom food for an unknown barcode."
+    },
     "Özet" : {
       "comment" : "Session summary."
     },
+    "Ürün" : {
+      "comment" : "Product card navigation title."
+    },
+    "Ürün aranıyor" : {
+      "comment" : "Product card loading text."
+    },
     "İlerleme" : {
       "comment" : "Tab title and navigation title of the progress screen."
+    },
+    "İnternet bağlantını kontrol edip tekrar dene." : {
+      "comment" : "Product card error description."
     },
     "Şablondan başla" : {
       "comment" : "Workout tab."

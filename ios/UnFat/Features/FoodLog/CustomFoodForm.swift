@@ -3,12 +3,18 @@ import SwiftUI
 
 /// Creates a `CustomFood` (name, per-100 g values, optional serving). Decimal fields accept the
 /// Turkish comma. Calls `onCreated` with the saved food (the add sheet then opens the amount editor).
+/// A prefilled draft (from a scan) may carry a barcode, which is shown read-only and saved with the food.
 struct CustomFoodForm: View {
     let onCreated: (CustomFood) -> Void
 
     @Environment(\.modelContext) private var context
-    @State private var draft = CustomFoodDraft()
+    @State private var draft: CustomFoodDraft
     @State private var saveFailed = false
+
+    init(prefill: CustomFoodDraft = CustomFoodDraft(), onCreated: @escaping (CustomFood) -> Void) {
+        self.onCreated = onCreated
+        _draft = State(initialValue: prefill)
+    }
 
     var body: some View {
         Form {
@@ -17,6 +23,17 @@ struct CustomFoodForm: View {
                     .textInputAutocapitalization(.sentences)
             } header: {
                 Text("Ad")
+            }
+
+            if let barcode = draft.barcode {
+                Section {
+                    LabeledContent("Barkod") {
+                        Text(verbatim: barcode)
+                            .monospacedDigit()
+                    }
+                } footer: {
+                    Text("Bu özel yemek bu barkoda bağlanır.")
+                }
             }
 
             Section {

@@ -20,6 +20,10 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case entryEditor = "entry-editor"
     case quickKcal = "quick-kcal"
     case customFood = "custom-food"
+    case barcodeScanner = "barcode-scanner"
+    case productCard = "product-card"
+    case productPartial = "product-partial"
+    case productNotFound = "product-not-found"
     /// Design-system gallery, from the top (rings, macro bars).
     case gallery
     /// Gallery from the number roll section (numbers, chips, keypad).
@@ -28,6 +32,8 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case gallery3 = "gallery-3"
     /// Gallery with the tuning panel open.
     case galleryTuning = "gallery-tuning"
+    /// Widget views at real size (small, medium, circular) in normal, over and no-target states.
+    case galleryWidgets = "gallery-widgets"
     case onboardingSex = "onboarding-sex"
     case onboardingBody = "onboarding-body"
     case onboardingWeight = "onboarding-weight"
@@ -53,10 +59,15 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .entryEditor: .screen(.foodLog(.entryEditor))
         case .quickKcal: .screen(.foodLog(.quickKcal))
         case .customFood: .screen(.foodLog(.customFood))
+        case .barcodeScanner: .screen(.barcode(.scanner))
+        case .productCard: .screen(.barcode(.productCard))
+        case .productPartial: .screen(.barcode(.productPartial))
+        case .productNotFound: .screen(.barcode(.productNotFound))
         case .gallery: .screen(.gallery(firstSection: .ring, showsTuning: false))
         case .gallery2: .screen(.gallery(firstSection: .numbers, showsTuning: false))
         case .gallery3: .screen(.gallery(firstSection: .restTimer, showsTuning: false))
         case .galleryTuning: .screen(.gallery(firstSection: .ring, showsTuning: true))
+        case .galleryWidgets: .screen(.widgetGallery)
         case .onboardingSex: .screen(.onboarding(.sex))
         case .onboardingBody: .screen(.onboarding(.body))
         case .onboardingWeight: .screen(.onboarding(.weight))

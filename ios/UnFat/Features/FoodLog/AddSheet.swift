@@ -6,6 +6,9 @@ enum AddRoute: Hashable {
     case food(LoggableFood)
     case quickKcal
     case customFood
+    case barcode
+    /// Custom food form prefilled from a scan (barcode, and whatever Open Food Facts knew).
+    case customFoodDraft(CustomFoodDraft)
 }
 
 /// The global add sheet: action rows, recents and favorites, and food search. A food opens the
@@ -19,6 +22,7 @@ struct AddSheet: View {
     @Query private var entries: [FoodEntry]
     @Query private var favorites: [FavoriteFood]
     @Query private var customFoods: [CustomFood]
+    @Query private var cachedProducts: [CachedProduct]
     @State private var path: [AddRoute] = []
     @State private var searchText: String
     @State private var detent: PresentationDetent = .large
@@ -40,7 +44,7 @@ struct AddSheet: View {
     private var isSearching: Bool { !trimmedSearch.isEmpty }
 
     private var searchResults: [LoggableFood] {
-        FoodLogService.search(trimmedSearch, customFoods: customFoods)
+        FoodLogService.search(trimmedSearch, customFoods: customFoods, cachedProducts: cachedProducts)
     }
 
     private var recents: [LoggableFood] {
@@ -101,6 +105,9 @@ struct AddSheet: View {
     @ViewBuilder
     private var browseSections: some View {
         Section {
+            NavigationLink(value: AddRoute.barcode) {
+                AddActionLabel(title: "Barkod tara", systemImage: "barcode.viewfinder")
+            }
             NavigationLink(value: AddRoute.quickKcal) {
                 AddActionLabel(title: "Hızlı kcal", systemImage: "bolt")
             }
@@ -164,6 +171,15 @@ struct AddSheet: View {
         case .customFood:
             CustomFoodForm { food in
                 // Replace the form with the amount editor, so back returns to the add list.
+                path = [.food(LoggableFood(custom: food))]
+            }
+        case .barcode:
+            BarcodeFlowView(
+                onFood: { food in path = [.food(food)] },
+                onCustom: { draft in path = [.customFoodDraft(draft)] }
+            )
+        case .customFoodDraft(let draft):
+            CustomFoodForm(prefill: draft) { food in
                 path = [.food(LoggableFood(custom: food))]
             }
         }
