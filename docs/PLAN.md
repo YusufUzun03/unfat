@@ -27,7 +27,7 @@ Every UI task is verified with the CI screenshots job (loop D) plus a device che
 - [x] **13 HealthKit** · medium · after 2, 11. Permissions flow, read body mass/steps/active energy into local-only cache, write `HKWorkout` with energy, Today shows steps/active kcal. Verify: device check in the Health app; unit tests around mapping. — Status 2026-11-03: CI green (203 app tests), Today and permissions screenshots reviewed; device check in the Health app pending.
 
 ## M4 — Progress and release
-- [ ] **14 Progress** · medium · after 3, 7, 11. Weight entry, trend chart, weekly intake vs target, adaptive TDEE card with accept-suggestion, per-exercise e1RM chart, PR list. Charts follow the dataviz rules. Verify: screenshots with fixture data (30/90 days).
+- [x] **14 Progress** · medium · after 3, 7, 11. Weight entry, trend chart, weekly intake vs target, adaptive TDEE card with accept-suggestion, per-exercise e1RM chart, PR list. Charts follow the dataviz rules. Verify: screenshots with fixture data (30/90 days). — Status 2026-11-04: CI green (53 core + 215 app tests), Progress 30/90 days, empty, dark, weight entry and exercise screenshots reviewed.
 - [ ] **15 Settings + App Store prep** · medium · after all. Sync toggle, units, Health and notification status, about, acknowledgements (ODbL, Firebase), disclaimer + methodology, privacy policy page (GitHub Pages), `PrivacyInfo.xcprivacy`, App Store metadata draft (tr), screenshots from loop D. Verify: checklist in SPEC "App Store requirements" ticked; TestFlight build reviewed on device.
 
 ## Order
