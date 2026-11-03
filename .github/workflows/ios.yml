@@ -230,7 +230,7 @@ jobs:
           xcrun simctl bootstatus "$SIM_UDID" -b
           xcrun simctl install "$SIM_UDID" "$app"
           capture() { # $1 = route name, $2 = file suffix
-            xcrun simctl launch --terminate-running-process "$SIM_UDID" "$BUNDLE_ID" -UNFAT_SCREEN "$1"
+            xcrun simctl launch --terminate-running-process "$SIM_UDID" "$BUNDLE_ID" -UNFAT_SCREEN "$1" -AppleLanguages "(tr)" -AppleLocale tr_TR
             sleep 3
             xcrun simctl io "$SIM_UDID" screenshot "$out/$1-$2.png"
           }
