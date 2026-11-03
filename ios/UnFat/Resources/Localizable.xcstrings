@@ -7,23 +7,134 @@
     "%@ kcal" : {
       "comment" : "Energy amount with unit, e.g. in a food entry row."
     },
+    "%@ kg" : {
+      "comment" : "Weekly rate chip title."
+    },
+    "%lld g" : {
+      "comment" : "Macro target in grams."
+    },
     "+15 sn" : {
       "comment" : "Rest timer button: add 15 seconds."
+    },
+    "Aktivite" : {
+      "comment" : "Onboarding step title: activity level."
+    },
+    "Al" : {
+      "comment" : "Goal segment: gain weight."
     },
     "Antrenman" : {
       "comment" : "Tab title and navigation title of the workout screen."
     },
+    "Aşırı aktif" : {
+      "comment" : "Activity level."
+    },
+    "Bazal metabolizma hızını hesaplamak için kullanılır (Mifflin-St Jeor denklemi)." : {
+      "comment" : "Footnote under the sex options."
+    },
+    "Başla" : {
+      "comment" : "Primary button of the last onboarding step; saves the profile."
+    },
+    "Bilgilerin kaydedilirken bir hata oluştu. Tekrar dene." : {
+      "comment" : "Alert message when saving fails."
+    },
+    "Boy" : {
+      "comment" : "Wheel picker label: height."
+    },
+    "Bu hedef, genel olarak önerilen en düşük alımın ya da bazal metabolizma hızının altında. İstersen yine de kullanabilirsin." : {
+      "comment" : "Floor warning footnote (never red, never blocks)."
+    },
     "Bugün" : {
       "comment" : "Tab title and navigation title of the today dashboard."
+    },
+    "Cinsiyet" : {
+      "comment" : "Onboarding step title: sex."
+    },
+    "Devam" : {
+      "comment" : "Primary button of onboarding steps 1-5."
+    },
+    "Değerlere dokunarak düzenleyebilirsin." : {
+      "comment" : "Hint under the targets."
+    },
+    "Doğum yılı" : {
+      "comment" : "Wheel picker label."
+    },
+    "Doğum yılı ve boy" : {
+      "comment" : "Onboarding step title: birth year and height."
     },
     "Ekle" : {
       "comment" : "Search-role tab that opens the add sheet; add sheet title."
     },
+    "Erkek" : {
+      "comment" : "Sex option."
+    },
+    "Fiziksel iş ve düzenli antrenman" : {
+      "comment" : "Activity level description."
+    },
     "Geç" : {
       "comment" : "Rest timer button: skip the rest."
     },
+    "Günlük hedefin, harcadığın enerjiye eşit olur." : {
+      "comment" : "Footnote shown for the maintain goal."
+    },
+    "Günlük hedefini ve protein miktarını hesaplamak için kullanılır." : {
+      "comment" : "Footnote under the weight keypad."
+    },
+    "Hafif aktif" : {
+      "comment" : "Activity level."
+    },
+    "Haftada 1-3 gün hafif egzersiz" : {
+      "comment" : "Activity level description."
+    },
+    "Haftada 3-5 gün egzersiz" : {
+      "comment" : "Activity level description."
+    },
+    "Haftada 6-7 gün yoğun egzersiz" : {
+      "comment" : "Activity level description."
+    },
+    "Haftalık en fazla %@ kg önerilir" : {
+      "comment" : "Footnote when the chosen rate exceeds 1 % of body weight per week."
+    },
+    "Haftalık hız" : {
+      "comment" : "Section header of the weekly rate chips."
+    },
+    "Hareketsiz" : {
+      "comment" : "Activity level."
+    },
+    "Hedef" : {
+      "comment" : "Onboarding step title and segmented control: weight goal."
+    },
+    "Hedefler" : {
+      "comment" : "Goal editor title."
+    },
+    "Hedeflerin" : {
+      "comment" : "Onboarding step title: computed targets."
+    },
+    "Kadın" : {
+      "comment" : "Sex option."
+    },
+    "Kalori" : {
+      "comment" : "Target name."
+    },
     "Karbonhidrat" : {
       "comment" : "Macro name (carbohydrate)."
+    },
+    "Kaydedilemedi" : {
+      "comment" : "Alert title when saving fails."
+    },
+    "Kaydet" : {
+      "comment" : "Save button of the goal editor."
+    },
+    "Kilo" : {
+      "comment" : "Onboarding step title: body weight."
+    },
+    "Koru" : {
+      "comment" : "Goal segment: maintain weight."
+    },
+    "Masa başı iş, çok az egzersiz" : {
+      "comment" : "Activity level description."
+    },
+    "Orta aktif" : {
+      "comment" : "Activity level."
     },
     "Protein" : {
       "comment" : "Macro name."
@@ -34,14 +145,35 @@
     "Set tamam" : {
       "comment" : "Accessibility label of the set check button; Live Activity button."
     },
+    "Seçimin antrenmanlarını da kapsar." : {
+      "comment" : "Footnote under the activity levels."
+    },
     "Sil" : {
       "comment" : "Accessibility label of the keypad delete key."
+    },
+    "Tamam" : {
+      "comment" : "Confirm button."
     },
     "Tekrar" : {
       "comment" : "Column title in the workout set list: repetitions."
     },
+    "Vazgeç" : {
+      "comment" : "Cancel button."
+    },
+    "Ver" : {
+      "comment" : "Goal segment: lose weight."
+    },
     "Yağ" : {
       "comment" : "Macro name (fat)."
+    },
+    "g" : {
+      "comment" : "Unit: grams."
+    },
+    "kcal" : {
+      "comment" : "Unit in the target edit sheet."
+    },
+    "kcal / gün" : {
+      "comment" : "Caption under the hero calorie target."
     },
     "kcal fazla" : {
       "comment" : "Calorie ring center caption under the kcal-over-target number (shown in secondary color, never red)."
@@ -51,6 +183,9 @@
     },
     "kg" : {
       "comment" : "Column title in the workout set list: weight in kilograms."
+    },
+    "Çok aktif" : {
+      "comment" : "Activity level."
     },
     "İlerleme" : {
       "comment" : "Tab title and navigation title of the progress screen."

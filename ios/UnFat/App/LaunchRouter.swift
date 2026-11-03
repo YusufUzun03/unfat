@@ -22,6 +22,13 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case gallery3 = "gallery-3"
     /// Gallery with the tuning panel open.
     case galleryTuning = "gallery-tuning"
+    case onboardingSex = "onboarding-sex"
+    case onboardingBody = "onboarding-body"
+    case onboardingWeight = "onboarding-weight"
+    case onboardingActivity = "onboarding-activity"
+    case onboardingGoal = "onboarding-goal"
+    case onboardingTargets = "onboarding-targets"
+    case goalEditor = "goal-editor"
 
     var destination: LaunchDestination {
         switch self {
@@ -33,6 +40,13 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .gallery2: .screen(.gallery(firstSection: .numbers, showsTuning: false))
         case .gallery3: .screen(.gallery(firstSection: .restTimer, showsTuning: false))
         case .galleryTuning: .screen(.gallery(firstSection: .ring, showsTuning: true))
+        case .onboardingSex: .screen(.onboarding(.sex))
+        case .onboardingBody: .screen(.onboarding(.body))
+        case .onboardingWeight: .screen(.onboarding(.weight))
+        case .onboardingActivity: .screen(.onboarding(.activity))
+        case .onboardingGoal: .screen(.onboarding(.goal))
+        case .onboardingTargets: .screen(.onboarding(.targets))
+        case .goalEditor: .screen(.goalEditor)
         }
     }
 }

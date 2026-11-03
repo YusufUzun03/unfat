@@ -43,6 +43,10 @@
 - `ios/UnFat/Debug/` — DEBUG only: GalleryView, TuningPanel + DesignTuning, DebugScreen (full-screen routes like `gallery`)
 - `ios/UnFat/Model/` — SwiftData models (synced: profile, food, workout; local: CachedProduct, HealthDaySummary), `UnFatSchema` (V1 + migration plan), `ModelContainerFactory` (Synced/Local configs in App Group), `SyncPreference`, DEBUG `Fixtures`
 - `ios/UnFat/Model/Seed/` — Codable seed types (`SeedFood`, `SeedExercise`) and `LossyArray`
+- `ios/UnFat/Services/TargetCalculator.swift` — pure mapping from onboarding input to rounded kcal/macros + floor assessment (delegates to UnFatCore)
+- `ios/UnFat/Features/Onboarding/` — onboarding flow (`OnboardingFlow` NavigationStack, 6 steps), `OnboardingModel` (state, target edits, save), `GoalSections`/`TargetSections` + keypad edit sheet, reusable `GoalEditorView`, shared row/scaffold components
+- `ios/UnFat/Debug/OnboardingDebug.swift` — DEBUG sample input and views for the `onboarding-*` and `goal-editor` routes
+- `ios/UnFatTests/TargetCalculatorTests.swift` — target calculation and onboarding save tests
 - `ios/UnFat/Services/SeedLoader.swift` — loads bundled `seed/*.json`
 - `ios/UnFat/Services/SeedSearchIndex.swift` — Turkish-folded search over seed + custom items
 - `ios/UnFat/Services/WidgetSnapshotWriter.swift` — writes the App Group snapshot and reloads widgets

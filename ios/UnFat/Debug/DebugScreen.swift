@@ -4,6 +4,8 @@ import SwiftUI
 /// Non-tab screens reachable from `-UNFAT_SCREEN`; `RootView` presents them full screen.
 enum DebugScreen: Hashable, Sendable, Identifiable {
     case gallery(firstSection: GallerySection, showsTuning: Bool)
+    case onboarding(OnboardingStep)
+    case goalEditor
 
     var id: Self { self }
 }
@@ -15,6 +17,10 @@ struct DebugScreenView: View {
         switch screen {
         case let .gallery(firstSection, showsTuning):
             GalleryView(firstSection: firstSection, showsTuning: showsTuning)
+        case let .onboarding(step):
+            OnboardingDebugView(step: step)
+        case .goalEditor:
+            GoalEditorDebugView()
         }
     }
 }

@@ -1,8 +1,12 @@
+import SwiftData
 import SwiftUI
 
 struct RootView: View {
     @State private var selection: AppTab = .today
     @State private var isAddSheetPresented = false
+    @Query private var profiles: [UserProfile]
+    /// Off for hosted unit tests and DEBUG screenshot routes (fixtures already hold a completed profile).
+    private let onboardingGateEnabled: Bool
     /// Tab requested by the DEBUG launch router; always nil in Release.
     private let launchTab: AppTab?
     #if DEBUG
@@ -27,9 +31,18 @@ struct RootView: View {
         #else
         launchTab = nil
         #endif
+        var gateEnabled = !ModelContainerFactory.isRunningUnitTests()
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains(LaunchRouter.argument) { gateEnabled = false }
+        #endif
+        onboardingGateEnabled = gateEnabled
         if let launchTab, launchTab != .add {
             _selection = State(initialValue: launchTab)
         }
+    }
+
+    private var needsOnboarding: Bool {
+        onboardingGateEnabled && !profiles.contains { $0.onboardingCompletedAt != nil }
     }
 
     var body: some View {
@@ -56,6 +69,9 @@ struct RootView: View {
         }
         .sheet(isPresented: $isAddSheetPresented) {
             AddSheet()
+        }
+        .fullScreenCover(isPresented: .constant(needsOnboarding)) {
+            OnboardingFlow()
         }
         .task {
             if launchTab == .add {
