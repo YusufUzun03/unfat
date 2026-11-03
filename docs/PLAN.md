@@ -23,7 +23,7 @@ Every UI task is verified with the CI screenshots job (loop D) plus a device che
 
 ## M3 — Workout
 - [x] **11 Programs + active session** · careful · after 2, 4, 5. Program templates (Full body, Upper/Lower, PPL), program editor, exercise picker (seed + custom), active session with prefill from last session, set check → in-app rest timer, finish summary (duration, volume, kcal, PRs), history. Verify: unit tests for prefill and summary math; screenshots; device run of a short session.
-- [ ] **12 Live Activity** · heavy · after 11. `WorkoutActivityAttributes`, Lock Screen + Dynamic Island views per mockup, `LiveActivityIntent`s (+15 s, skip, set done), local rest-end notification, stale/end handling, app-killed recovery. Verify: views in gallery screenshots; device test with the app suspended and killed.
+- [x] **12 Live Activity** · heavy · after 11. `WorkoutActivityAttributes`, Lock Screen + Dynamic Island views per mockup, `LiveActivityIntent`s (+15 s, skip, set done), local rest-end notification, stale/end handling, app-killed recovery. Verify: views in gallery screenshots; device test with the app suspended and killed. — Status 2026-11-03: CI green, gallery screenshots reviewed; device test (suspended, killed, locked) pending.
 - [ ] **13 HealthKit** · medium · after 2, 11. Permissions flow, read body mass/steps/active energy into local-only cache, write `HKWorkout` with energy, Today shows steps/active kcal. Verify: device check in the Health app; unit tests around mapping.
 
 ## M4 — Progress and release

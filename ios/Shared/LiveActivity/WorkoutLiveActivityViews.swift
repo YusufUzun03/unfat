@@ -93,8 +93,8 @@ private struct WorkoutButtonLabel: View {
     }
 }
 
-/// The buttons under the banner and in the expanded island: "+15 sn" and "Geç" while a rest runs,
-/// "Set tamam" otherwise (hidden once every set is done).
+/// The buttons under the banner and in the expanded island: "+15 sn", "Geç" and "Set tamam" while a
+/// rest runs, only "Set tamam" otherwise ("Set tamam" is hidden once every set is done).
 private struct WorkoutActionRow: View {
     let phase: WorkoutRestPhase
     let canCompleteSet: Bool
@@ -108,6 +108,11 @@ private struct WorkoutActionRow: View {
                 }
                 Button(intent: SkipRestIntent()) {
                     WorkoutButtonLabel(title: "Geç", isProminent: false)
+                }
+                if canCompleteSet {
+                    Button(intent: CompleteSetIntent()) {
+                        WorkoutButtonLabel(title: "Set tamam", isProminent: true)
+                    }
                 }
             case .notResting, .over:
                 if canCompleteSet {
