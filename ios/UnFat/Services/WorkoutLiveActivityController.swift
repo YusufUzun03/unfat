@@ -308,7 +308,7 @@ final class WorkoutLiveActivityController: Observable {
             isSuppressed: suppressedSessionID != nil && suppressedSessionID == desired?.sessionID
         )
         for index in plan.endIndices {
-            await active[index].end(nil, dismissalPolicy: .immediate)
+            await Self.endActivities(sessionID: existing[index])
         }
         guard let desired else { return }
 
@@ -316,7 +316,7 @@ final class WorkoutLiveActivityController: Observable {
         if let index = plan.updateIndex {
             requestedSessionID = desired.sessionID
             if lastApplied != desired {
-                await active[index].update(content)
+                await Self.updateActivity(sessionID: existing[index], content: content)
                 lastApplied = desired
             }
         } else if plan.requestsNew {
@@ -335,6 +335,24 @@ final class WorkoutLiveActivityController: Observable {
             } catch {
                 Self.logger.error("activity request failed: \(error.localizedDescription, privacy: .public)")
             }
+        }
+    }
+
+    // `Activity` is not Sendable: look it up again off the main actor instead of sending it there.
+    nonisolated private static func endActivities(sessionID: UUID) async {
+        for activity in Activity<WorkoutActivityAttributes>.activities
+        where activity.attributes.sessionID == sessionID {
+            await activity.end(nil, dismissalPolicy: .immediate)
+        }
+    }
+
+    nonisolated private static func updateActivity(
+        sessionID: UUID,
+        content: ActivityContent<WorkoutActivityAttributes.ContentState>
+    ) async {
+        for activity in Activity<WorkoutActivityAttributes>.activities
+        where activity.attributes.sessionID == sessionID {
+            await activity.update(content)
         }
     }
 }
