@@ -73,13 +73,23 @@ struct WidgetGalleryView: View {
     }
 
     /// 76 pt circular accessory widget; `dark` mocks the Lock Screen over a dark wallpaper.
+    @ViewBuilder
     private func circular(_ snapshot: WidgetSnapshot, dark: Bool) -> some View {
-        CircularCalorieWidgetView(snapshot: snapshot)
-            .frame(width: 76, height: 76)
-            .background(dark ? Color.white.opacity(0.18) : Color.primary.opacity(0.08), in: Circle())
-            .padding(Spacing.md)
-            .background(dark ? Color.black : Color.clear, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .environment(\.colorScheme, dark ? .dark : .light)
+        let widget = CircularCalorieWidgetView(snapshot: snapshot)
+        if dark {
+            // Lock Screen mock: always dark, whatever the app's appearance.
+            widget
+                .frame(width: 76, height: 76)
+                .background(Color.white.opacity(0.18), in: Circle())
+                .padding(Spacing.md)
+                .background(Color.black, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .environment(\.colorScheme, .dark)
+        } else {
+            widget
+                .frame(width: 76, height: 76)
+                .background(Color.primary.opacity(0.08), in: Circle())
+                .padding(Spacing.md)
+        }
     }
 }
 #endif

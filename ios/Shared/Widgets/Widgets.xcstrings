@@ -19,6 +19,12 @@
     "Yağ" : {
       "comment" : "Macro name (fat)."
     },
+    "fazla" : {
+      "comment" : "Lock Screen gauge label under the number of kcal over the target."
+    },
+    "kaldı" : {
+      "comment" : "Lock Screen gauge label under the number of kcal left."
+    },
     "kcal fazla" : {
       "comment" : "Widget caption under the number of kcal over the target."
     },

@@ -187,10 +187,11 @@ struct CircularCalorieWidgetView: View {
         Group {
             if snapshot.hasTarget {
                 Gauge(value: min(snapshot.kcalProgress, 1)) {
+                    // Short labels: "kcal kaldı" truncates in the 76 pt gauge.
                     if snapshot.isOverTarget {
-                        Text("kcal fazla", tableName: widgetStringTable)
+                        Text("fazla", tableName: widgetStringTable)
                     } else {
-                        Text("kcal kaldı", tableName: widgetStringTable)
+                        Text("kaldı", tableName: widgetStringTable)
                     }
                 } currentValueLabel: {
                     Text(wholeNumber(snapshot.kcalLeftOrOver))
