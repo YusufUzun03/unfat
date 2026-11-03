@@ -202,11 +202,13 @@ struct ModelTests {
         Fixtures.populate(context, now: now)
 
         #expect(try context.fetchCount(FetchDescriptor<UserProfile>()) == 1)
-        #expect(try context.fetchCount(FetchDescriptor<FoodEntry>()) == 6)
-        #expect(try context.fetchCount(FetchDescriptor<WeightEntry>()) == 30)
+        // 6 today + 2 calorie-only entries on each logged past day (days 2...89, every seventh left out: 75 days).
+        #expect(try context.fetchCount(FetchDescriptor<FoodEntry>()) == 6 + 2 * 75)
+        // 90 days, days ago 4, 10, ..., 88 skipped.
+        #expect(try context.fetchCount(FetchDescriptor<WeightEntry>()) == 75)
         #expect(try context.fetchCount(FetchDescriptor<Program>()) == 1)
         #expect(try context.fetchCount(FetchDescriptor<ProgramDay>()) == 3)
-        #expect(try context.fetchCount(FetchDescriptor<WorkoutSession>()) == 2)
+        #expect(try context.fetchCount(FetchDescriptor<WorkoutSession>()) == 24)
 
         let program = try #require(try context.fetch(FetchDescriptor<Program>()).first)
         #expect(program.sortedDays.count == 3)

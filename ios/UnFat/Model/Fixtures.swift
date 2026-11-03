@@ -3,7 +3,9 @@ import Foundation
 import SwiftData
 
 /// Realistic sample data for `-UNFAT_SCREEN` screenshot routes, previews and tests:
-/// a profile, 6 food entries today, 30 days of weigh-ins, one 3-day program and 2 past sessions.
+/// a profile, 6 food entries today, 90 days of weigh-ins (about 1 day in 6 skipped), calorie-only food entries
+/// on past days (from 2 days ago), one 3-day program and 8 weeks of progressive sessions (24 sessions).
+/// Today's numbers (food entries today, today's weigh-in, the two newest day A / day B sessions) are unchanged.
 /// Seed references (`seed:fixture-...`) are placeholders and do not resolve to bundled seed items;
 /// every row carries its own display name, so nothing needs to resolve.
 @MainActor
@@ -13,6 +15,7 @@ enum Fixtures {
         insertProfile(context, today: today, calendar: calendar)
         insertFood(context, today: today, calendar: calendar)
         insertWeights(context, today: today, calendar: calendar)
+        insertPastFood(context, today: today, calendar: calendar)
         insertHealth(context, today: today)
         let days = insertProgram(context)
         insertSessions(context, days: days, today: today, calendar: calendar)
@@ -114,13 +117,48 @@ enum Fixtures {
 
     // MARK: - Weight
 
-    /// 30 daily weigh-ins ending today: a slow downward trend (about 0.5 kg/week) with daily noise.
+    /// 90 days of weigh-ins ending today: a slow downward trend (about 0.5 kg/week) with daily noise.
+    /// Every sixth day in the past is skipped (today never is).
+    static let weightDays = 90
+
     private static func insertWeights(_ context: ModelContext, today: Date, calendar: Calendar) {
-        for daysAgo in 0..<30 {
+        for daysAgo in 0..<weightDays {
+            if isSkippedWeightDay(daysAgo) { continue }
             guard let day = calendar.date(byAdding: .day, value: -daysAgo, to: today) else { continue }
             let raw = 82.6 + 0.07 * Double(daysAgo) + 0.35 * sin(Double(daysAgo) * 1.3)
             let kg = (raw * 10).rounded() / 10
             context.insert(WeightEntry(date: day.addingTimeInterval(7 * 3600 + 30 * 60), kg: kg))
+        }
+    }
+
+    static func isSkippedWeightDay(_ daysAgo: Int) -> Bool {
+        daysAgo > 0 && daysAgo % 6 == 4
+    }
+
+    // MARK: - Past food
+
+    /// Past days with logged food: from 2 days ago (yesterday has its own debug fixture) back to 89 days ago,
+    /// every seventh day left out. Two calorie-only entries per day, about 2,200 kcal a day on average with
+    /// weekend bumps, which matches the weight trend above.
+    static let pastFoodFirstDaysAgo = 2
+
+    static func isSkippedFoodDay(_ daysAgo: Int) -> Bool {
+        daysAgo % 7 == 3
+    }
+
+    static func pastFoodKcal(daysAgo: Int, weekday: Int) -> Double {
+        let weekend = weekday == 1 || weekday == 7
+        let raw = 2000 + 40 * Double((daysAgo * 7) % 9) + (weekend ? 200 : 0)
+        return (min(2700, max(1900, raw)) / 10).rounded() * 10
+    }
+
+    private static func insertPastFood(_ context: ModelContext, today: Date, calendar: Calendar) {
+        for daysAgo in pastFoodFirstDaysAgo..<weightDays where !isSkippedFoodDay(daysAgo) {
+            guard let day = calendar.date(byAdding: .day, value: -daysAgo, to: today) else { continue }
+            let total = pastFoodKcal(daysAgo: daysAgo, weekday: calendar.component(.weekday, from: day))
+            let lunch = (total * 0.45 / 10).rounded() * 10
+            context.insert(FoodEntry.quickAdd(name: "Öğle", kcal: lunch, loggedAt: day.addingTimeInterval(13 * 3600)))
+            context.insert(FoodEntry.quickAdd(name: "Akşam", kcal: total - lunch, loggedAt: day.addingTimeInterval(20 * 3600)))
         }
     }
 
@@ -194,48 +232,74 @@ enum Fixtures {
 
     // MARK: - Sessions
 
-    /// Day A four days ago and day B two days ago, every set done.
+    /// 8 weeks of a C / A / B rotation (6, 4 and 2 days ago in the newest week, then every 7 days back),
+    /// every set done. The newest A and B keep the program weights; older weeks are lighter (about 2.5 % per
+    /// week, rounded to 0.5 kg), so every lift shows a rising curve.
+    static let sessionWeeks = 8
+
+    static func fixtureWeight(_ base: Double, weeksAgo: Int) -> Double {
+        let scaled = base * (1 - 0.025 * Double(weeksAgo))
+        return max(0.5, (scaled * 2).rounded() / 2)
+    }
+
     private static func insertSessions(_ context: ModelContext, days: [ProgramDay], today: Date, calendar: Calendar) {
-        let sessions: [(dayIndex: Int, daysAgo: Int, startMinute: Int, durationMinutes: Int, kcal: Double)] = [
+        // (program day index, days ago in the newest week, start minute, duration, kcal)
+        let rotation: [(dayIndex: Int, daysAgo: Int, startMinute: Int, durationMinutes: Int, kcal: Double)] = [
+            (2, 6, 18 * 60, 55, 290),
             (0, 4, 18 * 60 + 15, 62, 320),
             (1, 2, 18 * 60 + 30, 58, 300),
         ]
-        for plan in sessions {
-            let fixtureDay = programDays[plan.dayIndex]
-            guard let date = calendar.date(byAdding: .day, value: -plan.daysAgo, to: today) else { continue }
-            let start = date.addingTimeInterval(TimeInterval(plan.startMinute * 60))
-            let session = WorkoutSession(
-                name: fixtureDay.name,
-                startedAt: start,
-                programDayID: days.indices.contains(plan.dayIndex) ? days[plan.dayIndex].uuid : nil
-            )
-            session.endedAt = start.addingTimeInterval(TimeInterval(plan.durationMinutes * 60))
-            session.energyKcal = plan.kcal
-            context.insert(session)
-
-            var minute = 5
-            for (exerciseIndex, fixture) in fixtureDay.exercises.enumerated() {
-                let exercise = SessionExercise(
-                    exerciseRef: fixture.ref,
-                    exerciseName: fixture.name,
-                    order: exerciseIndex,
-                    restSeconds: fixture.rest
+        for week in 0..<sessionWeeks {
+            for plan in rotation {
+                insertSession(
+                    context, plan: plan, weeksAgo: week, days: days, today: today, calendar: calendar
                 )
-                context.insert(exercise)
-                exercise.session = session
-                for setIndex in 0..<fixture.sets {
-                    let reps = max(fixture.repMin, fixture.repMax - setIndex)
-                    let log = SetLog(
-                        order: setIndex,
-                        reps: reps,
-                        weightKg: fixture.weight,
-                        isDone: true,
-                        completedAt: start.addingTimeInterval(TimeInterval(minute * 60))
-                    )
-                    context.insert(log)
-                    log.sessionExercise = exercise
-                    minute += 4
-                }
+            }
+        }
+    }
+
+    private static func insertSession(
+        _ context: ModelContext,
+        plan: (dayIndex: Int, daysAgo: Int, startMinute: Int, durationMinutes: Int, kcal: Double),
+        weeksAgo: Int,
+        days: [ProgramDay],
+        today: Date,
+        calendar: Calendar
+    ) {
+        let fixtureDay = programDays[plan.dayIndex]
+        guard let date = calendar.date(byAdding: .day, value: -(plan.daysAgo + 7 * weeksAgo), to: today) else { return }
+        let start = date.addingTimeInterval(TimeInterval(plan.startMinute * 60))
+        let session = WorkoutSession(
+            name: fixtureDay.name,
+            startedAt: start,
+            programDayID: days.indices.contains(plan.dayIndex) ? days[plan.dayIndex].uuid : nil
+        )
+        session.endedAt = start.addingTimeInterval(TimeInterval(plan.durationMinutes * 60))
+        session.energyKcal = plan.kcal
+        context.insert(session)
+
+        var minute = 5
+        for (exerciseIndex, fixture) in fixtureDay.exercises.enumerated() {
+            let exercise = SessionExercise(
+                exerciseRef: fixture.ref,
+                exerciseName: fixture.name,
+                order: exerciseIndex,
+                restSeconds: fixture.rest
+            )
+            context.insert(exercise)
+            exercise.session = session
+            for setIndex in 0..<fixture.sets {
+                let reps = max(fixture.repMin, fixture.repMax - setIndex)
+                let log = SetLog(
+                    order: setIndex,
+                    reps: reps,
+                    weightKg: fixtureWeight(fixture.weight, weeksAgo: weeksAgo),
+                    isDone: true,
+                    completedAt: start.addingTimeInterval(TimeInterval(minute * 60))
+                )
+                context.insert(log)
+                log.sessionExercise = exercise
+                minute += 4
             }
         }
     }

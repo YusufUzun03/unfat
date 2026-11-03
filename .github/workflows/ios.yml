@@ -192,9 +192,9 @@ jobs:
     timeout-minutes: 40
     env:
       # Every `-UNFAT_SCREEN` route to capture, in order. Later tasks append names here.
-      SCREENS: today workout progress add gallery gallery-2 gallery-3 gallery-tuning gallery-widgets gallery-live-activity onboarding-sex onboarding-body onboarding-weight onboarding-activity onboarding-goal onboarding-targets onboarding-permissions goal-editor workout-empty program-editor exercise-picker session session-summary today-empty today-over add-search entry-editor quick-kcal custom-food barcode-scanner product-card product-partial product-not-found
+      SCREENS: today workout progress add gallery gallery-2 gallery-3 gallery-tuning gallery-widgets gallery-live-activity onboarding-sex onboarding-body onboarding-weight onboarding-activity onboarding-goal onboarding-targets onboarding-permissions goal-editor workout-empty program-editor exercise-picker session session-summary today-empty today-over add-search entry-editor quick-kcal custom-food barcode-scanner product-card product-partial product-not-found progress-90 progress-empty weight-entry exercise-progress
       # Routes captured a second time in dark appearance.
-      DARK_SCREENS: today gallery gallery-2 gallery-3 gallery-widgets gallery-live-activity onboarding-targets session session-summary entry-editor product-card
+      DARK_SCREENS: today gallery gallery-2 gallery-3 gallery-widgets gallery-live-activity onboarding-targets session session-summary entry-editor product-card progress exercise-progress
     steps:
       - uses: actions/checkout@v4
       - name: Select Xcode

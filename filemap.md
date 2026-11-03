@@ -31,10 +31,14 @@
 - `ios/UnFat/Services/RestTimerController.swift` — date-based rest timer math + `@Observable` controller; `onEvent` feeds the Live Activity controller; `restore(start:end:now:)` brings back a rest saved in the App Group (no event)
 - `ios/UnFat/Services/ProgramTemplates.swift` — Full body 3 / Üst-Alt 4 / İtme-Çekme-Bacak 6 day templates from seed exercise ids
 - `ios/UnFat/Services/ExerciseCatalog.swift` — `ExerciseItem` + seed/custom catalog with Turkish-folded search
+- `ios/UnFat/Debug/ProgressDebug.swift` — DEBUG views for `progress-90`, `progress-empty`, `weight-entry`, `exercise-progress`
 - `ios/UnFat/Debug/WorkoutDebug.swift` — DEBUG fixtures and views for `workout-empty`, `program-editor`, `exercise-picker`, `session`, `session-summary`
 - `ios/UnFatTests/WorkoutSessionTests.swift` — prefill, volume, summary kcal, PR integration, rest timer, templates, catalog search, workout route parsing
 - `ios/UnFatTests/HealthTests.swift` — day mapping, workout skip rules, body weight resolution, sync and workout write with the fake source
-- `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress placeholder
+- `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress tab: range picker, weight chart, weekly calories chart, TDEE card, record list (bounded `@Query`s rebuilt per range)
+- `ios/UnFat/Features/Progress/ProgressData.swift` — builds the Progress numbers from rows (`ProgressData`), `WeightInput` rules, write helpers (add weigh-in, accept suggested target)
+- `ios/UnFat/Features/Progress/WeightEntrySheet.swift` — "Kilo ekle" sheet
+- `ios/UnFat/Features/Progress/ExerciseProgressView.swift` — per-exercise e1RM chart, records, history
 - `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet: action rows, recents, favorites, search; "Barkod tara" row, cached OFF products in search; pushes `AddRoute` screens (editor, quick kcal, custom food, barcode)
 - `ios/UnFat/Features/FoodLog/EntryEditorView.swift` — amount editor (NumberRoll summary, serving chips, keypad, time) for add and edit; `EntryEditSheet` wrapper for timeline edits
 - `ios/UnFat/Features/FoodLog/QuickKcalView.swift` — quick kcal keypad + optional name (add and edit)
@@ -77,16 +81,18 @@
 - `ios/UnFatCore/Sources/UnFatCore/Trend.swift` — EMA trend weight
 - `ios/UnFatCore/Sources/UnFatCore/AdaptiveTDEE.swift` — adaptive TDEE update and eligibility
 - `ios/UnFatCore/Sources/UnFatCore/Workout.swift` — MET kcal, Epley e1RM, PR detection
+- `ios/UnFatCore/Sources/UnFatCore/ProgressStats.swift` — weekly intake means, TDEE coverage, target suggestion, exercise sessions/summaries/records
 - `ios/UnFatCore/Sources/UnFatCore/Units.swift` — unit conversions and display rounding
 - `ios/UnFatCore/Tests/UnFatCoreTests/*.swift` — formula tests with hand-computed values
 - `ios/UnFat/DesignSystem/Tokens/` — Palette (accent + semantic colors), Layout (spacing, radius), Typography (rounded numbers), Motion (springs, Reduce Motion), Haptics
 - `ios/UnFat/DesignSystem/Components/` — CalorieRing, MacroBar, NumberRoll, Keypad (+KeypadInput), ServingChips, RestTimerView, ListRows, PrimaryActionButton
 - `ios/UnFat/Debug/` — DEBUG only: GalleryView, TuningPanel + DesignTuning, DebugScreen (full-screen routes like `gallery`)
-- `ios/UnFat/Model/` — SwiftData models (synced: profile, food, workout; local: CachedProduct, HealthDaySummary), `UnFatSchema` (V1 + migration plan), `ModelContainerFactory` (Synced/Local configs in App Group), `SyncPreference`, DEBUG `Fixtures`
+- `ios/UnFat/Model/` — SwiftData models (synced: profile, food, workout; local: CachedProduct, HealthDaySummary), `UnFatSchema` (V1 + migration plan), `ModelContainerFactory` (Synced/Local configs in App Group), `SyncPreference`, DEBUG `Fixtures` (90 days of weigh-ins, 75 past food days, 8 weeks of sessions)
 - `ios/UnFat/Model/Seed/` — Codable seed types (`SeedFood`, `SeedExercise`) and `LossyArray`
 - `ios/UnFat/Services/TargetCalculator.swift` — pure mapping from onboarding input to rounded kcal/macros + floor assessment (delegates to UnFatCore)
 - `ios/UnFat/Features/Onboarding/` — onboarding flow (`OnboardingFlow` NavigationStack, 7 steps, last is the optional Izinler step with Saglik and Bildirimler rows), `OnboardingModel` (state, target edits, save), `GoalSections`/`TargetSections` + keypad edit sheet, reusable `GoalEditorView`, shared row/scaffold components
 - `ios/UnFat/Debug/OnboardingDebug.swift` — DEBUG sample input and views for the `onboarding-*` and `goal-editor` routes
+- `ios/UnFatTests/ProgressTests.swift` — Progress data tests (weekly grouping, TDEE card, suggestion threshold, weight input, exercise rows)
 - `ios/UnFatTests/TargetCalculatorTests.swift` — target calculation and onboarding save tests
 - `ios/UnFat/Services/SeedLoader.swift` — loads bundled `seed/*.json`
 - `ios/UnFat/Services/SeedSearchIndex.swift` — Turkish-folded search over seed + custom items

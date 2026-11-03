@@ -7,6 +7,7 @@ enum DebugScreen: Hashable, Sendable, Identifiable {
     case onboarding(OnboardingStep)
     case goalEditor
     case workout(WorkoutDebugScreen)
+    case progress(ProgressDebugScreen)
     case foodLog(FoodLogDebugScreen)
     case barcode(BarcodeDebugScreen)
     case widgetGallery
@@ -28,6 +29,8 @@ struct DebugScreenView: View {
             GoalEditorDebugView()
         case let .workout(kind):
             WorkoutDebugView(kind: kind)
+        case let .progress(kind):
+            ProgressDebugView(kind: kind)
         case let .foodLog(kind):
             FoodLogDebugView(kind: kind)
         case let .barcode(kind):

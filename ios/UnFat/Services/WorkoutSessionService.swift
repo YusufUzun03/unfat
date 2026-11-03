@@ -374,18 +374,23 @@ enum WorkoutSessionService {
     ) throws -> [SetRecord] {
         var records: [SetRecord] = []
         for session in try finishedSessions(in: context) where session.startedAt < date && session.uuid != sessionID {
-            for exercise in session.sortedExercises {
-                for log in exercise.sortedSetLogs where log.isDone {
-                    records.append(SetRecord(
-                        exerciseID: exercise.exerciseRef,
-                        date: log.completedAt ?? session.startedAt,
-                        weightKg: log.weightKg,
-                        reps: log.reps
-                    ))
-                }
-            }
+            records.append(contentsOf: setRecords(of: session))
         }
         return records
+    }
+
+    /// Done sets of a session as core records; the date is the completion time (session start as fallback).
+    static func setRecords(of session: WorkoutSession) -> [SetRecord] {
+        session.sortedExercises.flatMap { exercise in
+            exercise.sortedSetLogs.filter { $0.isDone }.map { log in
+                SetRecord(
+                    exerciseID: exercise.exerciseRef,
+                    date: log.completedAt ?? session.startedAt,
+                    weightKg: log.weightKg,
+                    reps: log.reps
+                )
+            }
+        }
     }
 
     /// Sum of weight x reps over the done sets of a session (history rows).

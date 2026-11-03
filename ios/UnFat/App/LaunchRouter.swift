@@ -49,6 +49,10 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case exercisePicker = "exercise-picker"
     case session
     case sessionSummary = "session-summary"
+    case progress90 = "progress-90"
+    case progressEmpty = "progress-empty"
+    case weightEntry = "weight-entry"
+    case exerciseProgress = "exercise-progress"
 
     var destination: LaunchDestination {
         switch self {
@@ -85,6 +89,10 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .exercisePicker: .screen(.workout(.exercisePicker))
         case .session: .screen(.workout(.session))
         case .sessionSummary: .screen(.workout(.sessionSummary))
+        case .progress90: .screen(.progress(.range90))
+        case .progressEmpty: .screen(.progress(.empty))
+        case .weightEntry: .screen(.progress(.weightEntry))
+        case .exerciseProgress: .screen(.progress(.exercise))
         }
     }
 }

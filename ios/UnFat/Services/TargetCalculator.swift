@@ -82,6 +82,23 @@ enum TargetCalculator {
         )
     }
 
+    /// Goal-aware daily target for an estimated TDEE (the adaptive estimate), compared with the current
+    /// target. Same goal math as `calculate`; the result is rounded to 10 kcal.
+    static func targetSuggestion(
+        tdee: Double,
+        goal: WeightGoal,
+        weeklyRateKg: Double,
+        weightKg: Double,
+        currentKcal: Double
+    ) -> TargetSuggestion {
+        ProgressStats.targetSuggestion(
+            tdee: tdee,
+            plan: GoalPlan(goal: goal.core, weeklyRateKg: weeklyRateKg),
+            weightKg: weightKg,
+            currentKcal: currentKcal
+        )
+    }
+
     /// Largest recommended weekly rate (1 % of body weight), kg/week.
     static func maxWeeklyRateKg(weightKg: Double) -> Double {
         Energy.maxWeeklyRateKg(weightKg: weightKg)

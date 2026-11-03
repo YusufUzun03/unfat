@@ -1,6 +1,36 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
+    "%@ × %lld" : {
+      "comment" : "Weight text times reps, e.g. '80 kg × 6'."
+    },
+    "%@ haftası" : {
+      "comment" : "Progress: chart callout title for a week; value is the week start date, e.g. '12 Eki haftası'."
+    },
+    "%lld antrenman" : {
+      "comment" : "Progress: accessibility value, number of sessions in the chart."
+    },
+    "%lld günde %@" : {
+      "comment" : "Progress: trend change over a range, e.g. '30 günde −1,8 kg'. First value days, second the signed kg text."
+    },
+    "%lld hafta" : {
+      "comment" : "Progress: accessibility value, number of weeks in the chart."
+    },
+    "≈ %@" : {
+      "comment" : "Progress: approximate value prefix (estimated 1RM text)."
+    },
+    "0,0" : {
+      "comment" : "Weight entry sheet: field placeholder."
+    },
+    "30 gün" : {
+      "comment" : "Progress: range picker option."
+    },
+    "30 ile 300 kg arasında bir değer gir." : {
+      "comment" : "Weight entry sheet: input hint."
+    },
+    "90 gün" : {
+      "comment" : "Progress: range picker option."
+    },
     "Adım, aktif enerji ve kilo okunur; antrenmanlar kaydedilir." : {
       "comment" : "Onboarding permissions: Health row detail."
     },
@@ -12,6 +42,12 @@
     },
     "adım" : {
       "comment" : "Today health row: unit after the step count."
+    },
+    "Antrenman bitirince rekorların burada görünür." : {
+      "comment" : "Progress: empty records state."
+    },
+    "Aralık" : {
+      "comment" : "Progress: accessibility label of the 30/90 day range picker."
     },
     "Bağlan" : {
       "comment" : "Onboarding permissions: button that asks for Health access."
@@ -25,14 +61,65 @@
     "Dinlenme bitince haber verir." : {
       "comment" : "Onboarding permissions: notifications row detail."
     },
+    "Eğilim %@" : {
+      "comment" : "Progress: trend weight callout / accessibility, value is the kg text."
+    },
+    "Eğilim %@, %lld günde %@" : {
+      "comment" : "Progress: weight chart accessibility value (trend now, days, signed change)."
+    },
+    "En iyi: %@ × %lld · %@" : {
+      "comment" : "Progress: best set of an exercise: weight text, reps, date."
+    },
+    "Enerji ihtiyacı" : {
+      "comment" : "Progress: energy (TDEE) section header."
+    },
+    "Günlük ortalama, sadece kayıt girilen günler." : {
+      "comment" : "Progress: weekly calories footer."
+    },
+    "Haftalık kalori" : {
+      "comment" : "Progress: weekly calories section header."
+    },
+    "Haftalık kalori grafiği" : {
+      "comment" : "Progress: accessibility label of the weekly calories chart."
+    },
+    "Hedefi güncelle" : {
+      "comment" : "Progress: button that applies the suggested target."
+    },
+    "Hedefin güncel." : {
+      "comment" : "Progress: current target already matches the estimate."
+    },
+    "Henüz kayıt yok" : {
+      "comment" : "Progress: no food entries yet in the range."
+    },
+    "Henüz tartı yok" : {
+      "comment" : "Progress: empty weight state title."
+    },
     "İkisi de isteğe bağlı. Sonra Ayarlar'dan değiştirebilirsin." : {
       "comment" : "Onboarding permissions: list footer."
+    },
+    "İlk tartını ekleyince kilo eğilimin burada görünür." : {
+      "comment" : "Progress: empty weight state detail."
+    },
+    "İptal" : {
+      "comment" : "Cancel button."
     },
     "İzinler" : {
       "comment" : "Onboarding step title: permissions."
     },
     "kcal aktif" : {
       "comment" : "Today health row: unit after the active energy amount."
+    },
+    "Kilo ekle" : {
+      "comment" : "Progress: button and sheet title to add a weigh-in."
+    },
+    "Kilo grafiği" : {
+      "comment" : "Progress: accessibility label of the weight chart."
+    },
+    "Ölçüm %@" : {
+      "comment" : "Progress: measured weight callout, value is the kg text."
+    },
+    "Önerilen hedef: %@ kcal" : {
+      "comment" : "Progress: suggested daily calorie target."
     },
     "Sağlık" : {
       "comment" : "Onboarding permissions: Health row title."
@@ -463,6 +550,9 @@
     "Sil" : {
       "comment" : "Accessibility label of the keypad delete key."
     },
+    "Son 28 gün: %lld tartı, %lld kayıtlı gün" : {
+      "comment" : "Progress: data basis of the TDEE estimate."
+    },
     "Son eklenenler" : {
       "comment" : "Add sheet section: recently logged foods."
     },
@@ -475,8 +565,20 @@
     "Sırt" : {
       "comment" : "Muscle group name (exercise picker, session header)."
     },
+    "Şu an: %lld gün, %lld tartı, %lld kayıtlı gün" : {
+      "comment" : "Progress: current data counts (span days, weigh-ins, logged days)."
+    },
+    "Tahmin için en az 14 gün, 10 tartı ve 10 kayıtlı gün gerekli." : {
+      "comment" : "Progress: TDEE estimate needs more data."
+    },
     "Tahmini 1TM" : {
       "comment" : "Personal record kind."
+    },
+    "Tahmini 1TM grafiği" : {
+      "comment" : "Progress: accessibility label of the e1RM chart."
+    },
+    "Tahmini TDEE" : {
+      "comment" : "Progress: estimated total daily energy expenditure row label."
     },
     "Tamam" : {
       "comment" : "Confirm button."
@@ -486,6 +588,9 @@
     },
     "Tamamlanmayan setler silinir." : {
       "comment" : "Active session."
+    },
+    "Tarih" : {
+      "comment" : "Weight entry sheet: date row."
     },
     "Tekrar" : {
       "comment" : "Column title in the workout set list: repetitions."
