@@ -151,6 +151,7 @@ extension LoggableFood {
 
 extension CustomFoodDraft {
     /// Form values for the custom food form from whatever OFF knew, plus the barcode.
+    @MainActor
     init(product: OFFProduct) {
         func text(_ value: Double?) -> String {
             value.map { FoodLogService.canonicalAmount($0, maxFractionDigits: 1) } ?? ""
