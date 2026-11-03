@@ -217,6 +217,7 @@ private struct TargetsStep: View {
     private func save() {
         do {
             try model.save(in: context)
+            refreshWidgetSnapshot(context)
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             finish()
         } catch {

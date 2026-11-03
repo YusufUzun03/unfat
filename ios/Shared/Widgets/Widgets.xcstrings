@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "Bugünkü kalori ve makroların." : {
+      "comment" : "Calorie widget description in the widget gallery."
+    },
+    "Hedefini belirle" : {
+      "comment" : "Widget state before a calorie target exists."
+    },
+    "Kalori" : {
+      "comment" : "Calorie widget display name in the widget gallery."
+    },
+    "Karbonhidrat" : {
+      "comment" : "Macro name (carbohydrate)."
+    },
+    "Protein" : {
+      "comment" : "Macro name."
+    },
+    "Yağ" : {
+      "comment" : "Macro name (fat)."
+    },
+    "kcal fazla" : {
+      "comment" : "Widget caption under the number of kcal over the target."
+    },
+    "kcal kaldı" : {
+      "comment" : "Widget caption under the number of kcal left."
+    }
+  },
+  "version" : "1.0"
+}

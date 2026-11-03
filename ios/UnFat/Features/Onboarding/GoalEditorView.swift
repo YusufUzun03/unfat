@@ -40,6 +40,7 @@ struct GoalEditorView: View {
     private func save() {
         do {
             try model.saveGoal(to: profile, in: context)
+            refreshWidgetSnapshot(context)
             dismiss()
         } catch {
             saveFailed = true

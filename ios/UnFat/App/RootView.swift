@@ -7,6 +7,8 @@ struct RootView: View {
     /// Bumped when the add sheet logged something; the haptic plays from here because the sheet dismisses itself.
     @State private var loggedTick = 0
     @Query private var profiles: [UserProfile]
+    @Environment(\.modelContext) private var context
+    @Environment(\.scenePhase) private var scenePhase
     /// Off for hosted unit tests and DEBUG screenshot routes (fixtures already hold a completed profile).
     private let onboardingGateEnabled: Bool
     /// Tab requested by the DEBUG launch router; always nil in Release.
@@ -73,6 +75,13 @@ struct RootView: View {
             AddSheet(onLogged: { loggedTick += 1 })
         }
         .sensoryFeedback(Haptics.foodLogged, trigger: loggedTick)
+        .onChange(of: scenePhase, initial: true) { _, phase in
+            // Rewrites the widget snapshot so a new day's rollover and CloudKit-synced changes reach the
+            // widgets. Skipped in hosted unit tests and DEBUG screenshot routes (no onboarding gate).
+            if phase == .active, onboardingGateEnabled {
+                refreshWidgetSnapshot(context)
+            }
+        }
         .fullScreenCover(isPresented: .constant(needsOnboarding)) {
             OnboardingFlow()
         }
