@@ -96,7 +96,18 @@ Photo flow returns structured JSON (items: name, grams, kcal, P/C/F, confidence)
 Apple style: flat, plain backgrounds, grouped lists over card stacks, no gradients, no emoji, one accent color, SF Pro + SF Rounded for numbers, `contentTransition(.numericText())` for changing numbers, spring animations, `sensoryFeedback` haptics. Overshooting the target is never red (neutral tone). Concrete tokens and screen mockups: section "Design decisions" below (filled after mockup review).
 
 ### Design decisions
-_Pending mockup review._
+Approved 2026-11-03 (mockups: Today, entry editor, active workout, Lock Screen Live Activity).
+- **Color**: one accent `#FF6A3D` (coral orange) in light and dark (`AccentColor` asset). Everything else uses system semantic colors: `systemGroupedBackground`, `secondarySystemGroupedBackground`, `label`, `secondaryLabel`, `tertiaryLabel`, `separator`. Bar/ring tracks use `tertiarySystemFill`. No other hues except system red for destructive actions only.
+- **Over target**: ring completes in accent; the overflow continues as a second lap in `secondaryLabel`; text says "120 kcal fazla" in `secondaryLabel`. Never red.
+- **Type**: SF Pro for text, SF Rounded (`.fontDesign(.rounded)`) for all numbers, `monospacedDigit()` on timers. Large title for tab roots; hero numbers 34 pt semibold rounded.
+- **Spacing**: 4 / 8 / 12 / 16 / 24 / 32 scale; screen side margin 16; grouped container corner radius 14 (continuous); chips are capsules.
+- **Layout**: grouped lists and plain sections, not card stacks. Entry timeline rows: time (secondary, monospaced) · name · kcal right-aligned.
+- **Components**: calorie ring (stroke 11 pt on a 110 pt ring, round caps, value + "kcal kaldı" centered); macro bars (5 pt, capsule, accent fill); entry editor with summary block (kcal + P/K/Y), serving chips (selected = accent fill, white text), custom 3×4 keypad, full-width accent "Ekle" button; set rows (Set · kg · Reps · check circle, done = accent); rest block (time, −15 / +15 / Geç, progress bar).
+- **Motion**: default `.spring(duration: 0.35, bounce: 0.15)`; ring fill `.spring(duration: 0.6, bounce: 0.1)`; numbers `.contentTransition(.numericText())`; sheet and navigation use system transitions; respect Reduce Motion (fades instead of springs). All values live in `Motion` tokens and are tunable in the DEBUG panel.
+- **Haptics**: `.success` on food logged, `.impact(.light)` on set check, `.warning` never used for targets.
+- **Tabs**: Bugün (`sun.max`), Antrenman (`dumbbell`), İlerleme (`chart.line.uptrend.xyaxis`), Ekle (`plus`, `Tab(role: .search)` so it sits apart in the iOS 26 tab bar and opens the add sheet).
+- **Live Activity**: Lock Screen banner = workout · exercise, "Set x / y", rest countdown in accent (`Text(timerInterval:)`), progress bar, three buttons (+15 sn, Geç, Set tamam — the last one accent). Dynamic Island compact: dumbbell icon leading, countdown trailing in accent; minimal: countdown; expanded: exercise + set leading, countdown trailing, "Set tamam" bottom.
+- **Widgets**: small = ring + kcal left; medium = ring + three macro bars; `accessoryCircular` = `Gauge` with kcal left.
 
 ## App Store requirements (MVP release)
 Disclaimer + methodology page (1.4.1), privacy policy (GitHub Pages), HealthKit usage strings and no HealthKit data in iCloud (5.1.3), AI photo consent (5.1.2(i)), `PrivacyInfo.xcprivacy`, ODbL + library acknowledgements screen, screenshots from loop D, Turkey storefront only, age rating 18+ only if the Gemini terms require it at submission time.
