@@ -29,5 +29,12 @@
 - `ios/UnFatWidgets/PlaceholderWidget.swift` — temporary static widget showing "UnFat"
 - `ios/UnFatTests/LaunchRouterTests.swift` — hosted unit test (launch argument parsing)
 - `ios/UnFatCore/Package.swift` — local Swift package (tools 6.0, iOS 26 + macOS 15)
-- `ios/UnFatCore/Sources/UnFatCore/CoreInfo.swift` — placeholder public function
-- `ios/UnFatCore/Tests/UnFatCoreTests/CoreInfoTests.swift` — package test
+- `ios/UnFatCore/Sources/UnFatCore/Profile.swift` — sex, activity multipliers, goal plan, validated profile
+- `ios/UnFatCore/Sources/UnFatCore/Energy.swift` — BMR, TDEE, goal-adjusted calorie target
+- `ios/UnFatCore/Sources/UnFatCore/Macros.swift` — macro targets with overrides
+- `ios/UnFatCore/Sources/UnFatCore/Floors.swift` — minimum-intake and below-BMR warnings
+- `ios/UnFatCore/Sources/UnFatCore/Trend.swift` — EMA trend weight
+- `ios/UnFatCore/Sources/UnFatCore/AdaptiveTDEE.swift` — adaptive TDEE update and eligibility
+- `ios/UnFatCore/Sources/UnFatCore/Workout.swift` — MET kcal, Epley e1RM, PR detection
+- `ios/UnFatCore/Sources/UnFatCore/Units.swift` — unit conversions and display rounding
+- `ios/UnFatCore/Tests/UnFatCoreTests/*.swift` — formula tests with hand-computed values
