@@ -207,7 +207,7 @@ private struct ProgressContent: View {
         .chartYScale(domain: snap.weightDomain ?? 0...1)
         .chartYAxis { AxisMarks(values: .automatic(desiredCount: 4)) }
         .chartXAxis {
-            AxisMarks(values: .stride(by: .weekOfYear)) {
+            AxisMarks(values: .stride(by: .weekOfYear, count: snap.range.axisWeekStride)) {
                 AxisGridLine()
                 AxisValueLabel(format: .dateTime.day().month(.abbreviated))
             }
@@ -297,7 +297,7 @@ private struct ProgressContent: View {
         .chartYScale(domain: 0...max(top, 1))
         .chartYAxis { AxisMarks(values: .automatic(desiredCount: 4)) }
         .chartXAxis {
-            AxisMarks(values: .stride(by: .weekOfYear)) {
+            AxisMarks(values: .stride(by: .weekOfYear, count: snap.range.axisWeekStride)) {
                 AxisValueLabel(format: .dateTime.day().month(.abbreviated))
             }
         }

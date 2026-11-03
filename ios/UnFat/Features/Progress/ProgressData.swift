@@ -9,6 +9,9 @@ enum ProgressRange: Int, CaseIterable, Identifiable, Sendable {
 
     var id: Int { rawValue }
     var days: Int { rawValue }
+
+    /// Weeks between x-axis labels, so 90 days stays readable on a phone.
+    var axisWeekStride: Int { self == .days30 ? 1 : 3 }
 }
 
 /// The profile fields the Progress tab needs, detached from SwiftData.
