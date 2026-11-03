@@ -51,6 +51,8 @@ jobs:
       - name: Generate project
         working-directory: ios
         run: xcodegen generate
+      - name: Validate seed data
+        run: python3 -B -I tools/seed/validate.py
       - name: UnFatCore package tests
         working-directory: ios/UnFatCore
         run: swift test
