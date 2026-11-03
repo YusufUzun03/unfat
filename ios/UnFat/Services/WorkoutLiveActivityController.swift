@@ -10,8 +10,10 @@ import UserNotifications
 enum WorkoutRestNotification {
     static let identifier = "workout-rest-end"
 
-    static func requestAuthorization() async {
-        _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+    /// Returns whether notifications are allowed after the request.
+    @discardableResult
+    static func requestAuthorization() async -> Bool {
+        (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
     }
 
     /// Does nothing when the end is not in the future.

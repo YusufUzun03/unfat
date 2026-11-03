@@ -13,6 +13,7 @@ enum Fixtures {
         insertProfile(context, today: today, calendar: calendar)
         insertFood(context, today: today, calendar: calendar)
         insertWeights(context, today: today, calendar: calendar)
+        insertHealth(context, today: today)
         let days = insertProgram(context)
         insertSessions(context, days: days, today: today, calendar: calendar)
         do {
@@ -121,6 +122,13 @@ enum Fixtures {
             let kg = (raw * 10).rounded() / 10
             context.insert(WeightEntry(date: day.addingTimeInterval(7 * 3600 + 30 * 60), kg: kg))
         }
+    }
+
+    // MARK: - Health
+
+    /// Today's steps and active energy as read from Health (local-only model), for the Today row.
+    private static func insertHealth(_ context: ModelContext, today: Date) {
+        context.insert(HealthDaySummary(day: today, steps: 8432, activeKcal: 312))
     }
 
     // MARK: - Program

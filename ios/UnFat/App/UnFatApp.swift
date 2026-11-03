@@ -8,6 +8,8 @@ struct UnFatApp: App {
     private let modelContainer: ModelContainer
     /// Workout Live Activity and the shared rest timer; in the environment of every screen.
     private let liveActivity: WorkoutLiveActivityController
+    /// Health reads and workout writes; in the environment of every screen. Never live in tests or screenshots.
+    private let health: HealthSyncService
 
     @Environment(\.scenePhase) private var scenePhase
 
@@ -20,6 +22,7 @@ struct UnFatApp: App {
             isLive: WorkoutLiveActivityController.shouldRunLive()
         )
         liveActivity = controller
+        health = HealthSyncService(source: HealthSyncService.makeSource())
         // Restore first, then accept the Live Activity buttons: an intent that woke the app in the
         // background finds the rest timer and the session already in place.
         controller.launch()
@@ -32,6 +35,7 @@ struct UnFatApp: App {
         WindowGroup {
             RootView()
                 .environment(liveActivity)
+                .environment(health)
         }
         .modelContainer(modelContainer)
         .onChange(of: scenePhase) { _, newPhase in
@@ -39,6 +43,8 @@ struct UnFatApp: App {
             // too early at launch, and refreshes the activity after the app was away.
             if newPhase == .active {
                 liveActivity.sync()
+                // Reads Health only after the authorization request was shown once.
+                Task { await health.refresh(in: modelContainer.mainContext) }
             }
         }
     }

@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 import UIKit
 
-/// The onboarding `NavigationStack`: six pushed steps, saved on the last one.
+/// The onboarding `NavigationStack`: seven pushed steps, saved on the last one.
 struct OnboardingFlow: View {
     @State private var model: OnboardingModel
     @State private var path: [OnboardingStep]
@@ -50,7 +50,8 @@ private struct OnboardingStepView: View {
         case .weight: WeightStep(model: model) { advance(step) }
         case .activity: ActivityStep(model: model) { advance(step) }
         case .goal: GoalStep(model: model) { advance(step) }
-        case .targets: TargetsStep(model: model, finish: finish)
+        case .targets: TargetsStep(model: model) { advance(step) }
+        case .permissions: PermissionsStep(model: model, finish: finish)
         }
     }
 }
@@ -187,18 +188,14 @@ private struct GoalStep: View {
 
 private struct TargetsStep: View {
     let model: OnboardingModel
-    let finish: () -> Void
-
-    @Environment(\.modelContext) private var context
-    @State private var saveFailed = false
+    let next: () -> Void
 
     var body: some View {
         StepScaffold(
             step: .targets,
             title: "Hedeflerin",
-            buttonTitle: "Başla",
             isEnabled: model.input != nil && model.kcal > 0,
-            action: save
+            action: next
         ) {
             List {
                 TargetSections(model: model)
@@ -206,6 +203,61 @@ private struct TargetsStep: View {
             .onAppear { model.refreshTargets() }
             .onChange(of: model.input) { _, _ in model.refreshTargets() }
             .targetEditSheet(model)
+        }
+    }
+}
+
+/// Optional last step: Health and notification permissions. "Başla" saves the profile, which makes the
+/// root gate dismiss the flow, so the profile is only saved here and never earlier.
+private struct PermissionsStep: View {
+    let model: OnboardingModel
+    let finish: () -> Void
+
+    @Environment(\.modelContext) private var context
+    @Environment(HealthSyncService.self) private var health
+    @State private var healthConnected = false
+    @State private var notificationsEnabled = false
+    @State private var saveFailed = false
+
+    var body: some View {
+        StepScaffold(
+            step: .permissions,
+            title: "İzinler",
+            buttonTitle: "Başla",
+            isEnabled: model.input != nil && model.kcal > 0,
+            action: save
+        ) {
+            List {
+                Section {
+                    if health.isAvailable {
+                        PermissionRow(
+                            symbol: "heart",
+                            title: "Sağlık",
+                            detail: "Adım, aktif enerji ve kilo okunur; antrenmanlar kaydedilir.",
+                            actionTitle: "Bağlan",
+                            doneTitle: "Bağlandı",
+                            isDone: healthConnected
+                        ) {
+                            await health.connect(in: context)
+                            healthConnected = true
+                        }
+                    }
+                    PermissionRow(
+                        symbol: "bell",
+                        title: "Bildirimler",
+                        detail: "Dinlenme bitince haber verir.",
+                        actionTitle: "Aç",
+                        doneTitle: "Açık",
+                        isDone: notificationsEnabled
+                    ) {
+                        notificationsEnabled = await WorkoutRestNotification.requestAuthorization()
+                    }
+                } footer: {
+                    Text("İkisi de isteğe bağlı. Sonra Ayarlar'dan değiştirebilirsin.")
+                }
+            }
+            // The flow can open here directly (DEBUG route), so the targets are computed again.
+            .onAppear { model.refreshTargets() }
         }
         .alert("Kaydedilemedi", isPresented: $saveFailed) {
             Button("Tamam", role: .cancel) {}

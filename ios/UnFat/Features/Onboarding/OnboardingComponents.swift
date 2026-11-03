@@ -76,7 +76,7 @@ struct SelectionRow: View {
     }
 }
 
-/// Shared chrome of the onboarding steps: large title, "n / 6" indicator, full-width primary button.
+/// Shared chrome of the onboarding steps: large title, "n / 7" indicator, full-width primary button.
 struct StepScaffold<Content: View>: View {
     let step: OnboardingStep
     let title: LocalizedStringKey
@@ -105,5 +105,46 @@ struct StepScaffold<Content: View>: View {
                     .padding(.vertical, Spacing.xs)
                     .background(Palette.groupedBackground)
             }
+    }
+}
+
+/// Permission list row: accent symbol, title with a one-line detail, and a small button that turns into
+/// a secondary "done" label with a checkmark once the request ran.
+struct PermissionRow: View {
+    let symbol: String
+    let title: LocalizedStringKey
+    let detail: LocalizedStringKey
+    let actionTitle: LocalizedStringKey
+    let doneTitle: LocalizedStringKey
+    let isDone: Bool
+    let action: @MainActor () async -> Void
+
+    var body: some View {
+        HStack(spacing: Spacing.sm) {
+            Image(systemName: symbol)
+                .font(.title3)
+                .foregroundStyle(Palette.accent)
+                .frame(width: 28)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: Spacing.xxs) {
+                Text(title)
+                Text(detail)
+                    .font(.footnote)
+                    .foregroundStyle(Palette.secondaryLabel)
+            }
+            Spacer(minLength: Spacing.xs)
+            if isDone {
+                Label(doneTitle, systemImage: "checkmark")
+                    .font(.subheadline)
+                    .foregroundStyle(Palette.secondaryLabel)
+            } else {
+                Button(actionTitle) {
+                    Task { await action() }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                .tint(Palette.accent)
+            }
+        }
     }
 }

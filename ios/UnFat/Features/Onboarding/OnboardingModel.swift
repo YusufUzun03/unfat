@@ -12,8 +12,9 @@ enum OnboardingStep: Int, CaseIterable, Hashable, Sendable {
     case activity
     case goal
     case targets
+    case permissions
 
-    /// 1-based position for the "1 / 6" indicator.
+    /// 1-based position for the "1 / 7" indicator.
     var number: Int { rawValue + 1 }
     static var count: Int { allCases.count }
 }

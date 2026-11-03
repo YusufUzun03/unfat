@@ -26,11 +26,14 @@
 - `ios/UnFat/Features/Workout/ExercisePickerView.swift` — seed + custom exercise picker with search and muscle filter, custom exercise sheet
 - `ios/UnFat/Features/Workout/ExerciseLabels.swift` — Turkish titles for muscle, equipment, PR kind; workout number formatting
 - `ios/UnFat/Services/WorkoutSessionService.swift` — session logic: prefill/volume math, start/edit/finish, summary with PRs (UnFatCore), program creation from templates
+- `ios/UnFat/Services/HealthService.swift` — `HealthDataSource` protocol, pure `HealthMapping`/`HealthWorkoutPlan`, `LiveHealthDataSource` (HealthKit), `UnavailableHealthDataSource`, DEBUG `FakeHealthDataSource`
+- `ios/UnFat/Services/HealthSyncService.swift` — `@MainActor` `HealthSyncService` (connect, refresh 7 days into local `HealthDaySummary`, workout write after finish) and `HealthSummaryStore.upsert`
 - `ios/UnFat/Services/RestTimerController.swift` — date-based rest timer math + `@Observable` controller; `onEvent` feeds the Live Activity controller; `restore(start:end:now:)` brings back a rest saved in the App Group (no event)
 - `ios/UnFat/Services/ProgramTemplates.swift` — Full body 3 / Üst-Alt 4 / İtme-Çekme-Bacak 6 day templates from seed exercise ids
 - `ios/UnFat/Services/ExerciseCatalog.swift` — `ExerciseItem` + seed/custom catalog with Turkish-folded search
 - `ios/UnFat/Debug/WorkoutDebug.swift` — DEBUG fixtures and views for `workout-empty`, `program-editor`, `exercise-picker`, `session`, `session-summary`
 - `ios/UnFatTests/WorkoutSessionTests.swift` — prefill, volume, summary kcal, PR integration, rest timer, templates, catalog search, workout route parsing
+- `ios/UnFatTests/HealthTests.swift` — day mapping, workout skip rules, body weight resolution, sync and workout write with the fake source
 - `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress placeholder
 - `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet: action rows, recents, favorites, search; "Barkod tara" row, cached OFF products in search; pushes `AddRoute` screens (editor, quick kcal, custom food, barcode)
 - `ios/UnFat/Features/FoodLog/EntryEditorView.swift` — amount editor (NumberRoll summary, serving chips, keypad, time) for add and edit; `EntryEditSheet` wrapper for timeline edits
@@ -82,7 +85,7 @@
 - `ios/UnFat/Model/` — SwiftData models (synced: profile, food, workout; local: CachedProduct, HealthDaySummary), `UnFatSchema` (V1 + migration plan), `ModelContainerFactory` (Synced/Local configs in App Group), `SyncPreference`, DEBUG `Fixtures`
 - `ios/UnFat/Model/Seed/` — Codable seed types (`SeedFood`, `SeedExercise`) and `LossyArray`
 - `ios/UnFat/Services/TargetCalculator.swift` — pure mapping from onboarding input to rounded kcal/macros + floor assessment (delegates to UnFatCore)
-- `ios/UnFat/Features/Onboarding/` — onboarding flow (`OnboardingFlow` NavigationStack, 6 steps), `OnboardingModel` (state, target edits, save), `GoalSections`/`TargetSections` + keypad edit sheet, reusable `GoalEditorView`, shared row/scaffold components
+- `ios/UnFat/Features/Onboarding/` — onboarding flow (`OnboardingFlow` NavigationStack, 7 steps, last is the optional Izinler step with Saglik and Bildirimler rows), `OnboardingModel` (state, target edits, save), `GoalSections`/`TargetSections` + keypad edit sheet, reusable `GoalEditorView`, shared row/scaffold components
 - `ios/UnFat/Debug/OnboardingDebug.swift` — DEBUG sample input and views for the `onboarding-*` and `goal-editor` routes
 - `ios/UnFatTests/TargetCalculatorTests.swift` — target calculation and onboarding save tests
 - `ios/UnFat/Services/SeedLoader.swift` — loads bundled `seed/*.json`

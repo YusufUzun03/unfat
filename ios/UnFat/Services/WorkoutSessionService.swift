@@ -66,6 +66,32 @@ enum WorkoutMath {
     static func volume(of sets: [SetValue]) -> Double {
         sets.reduce(0) { $0 + $1.weightKg * Double($1.reps) }
     }
+
+    /// A body weight with the date it was recorded.
+    struct DatedWeight: Equatable, Sendable {
+        var date: Date
+        var kg: Double
+    }
+
+    /// Body weight for kcal math: the more recent of the user's last weigh-in and the last Health body
+    /// mass, falling back to `fallbackBodyWeightKg`. Health values only carry a day, so on the same
+    /// calendar day the user's own entry wins. Non-positive values are ignored.
+    static func bodyWeightKg(
+        userEntry: DatedWeight?,
+        health: DatedWeight?,
+        calendar: Calendar = .current
+    ) -> Double {
+        let user = userEntry.flatMap { $0.kg > 0 ? $0 : nil }
+        let fromHealth = health.flatMap { $0.kg > 0 ? $0 : nil }
+        switch (user, fromHealth) {
+        case let (user?, fromHealth?):
+            let userDay = calendar.startOfDay(for: user.date)
+            return calendar.startOfDay(for: fromHealth.date) > userDay ? fromHealth.kg : user.kg
+        case let (user?, nil): return user.kg
+        case let (nil, fromHealth?): return fromHealth.kg
+        case (nil, nil): return fallbackBodyWeightKg
+        }
+    }
 }
 
 /// Session logic behind the Workout tab: start, edit, finish, summary, templates.
@@ -327,9 +353,18 @@ enum WorkoutSessionService {
     }
 
     private static func latestWeightKg(in context: ModelContext) throws -> Double {
-        var descriptor = FetchDescriptor<WeightEntry>(sortBy: [SortDescriptor(\WeightEntry.date, order: .reverse)])
-        descriptor.fetchLimit = 1
-        return try context.fetch(descriptor).first?.kg ?? WorkoutMath.fallbackBodyWeightKg
+        var weightDescriptor = FetchDescriptor<WeightEntry>(sortBy: [SortDescriptor(\WeightEntry.date, order: .reverse)])
+        weightDescriptor.fetchLimit = 1
+        var healthDescriptor = FetchDescriptor<HealthDaySummary>(
+            predicate: #Predicate { $0.bodyMassKg != nil },
+            sortBy: [SortDescriptor(\HealthDaySummary.day, order: .reverse)]
+        )
+        healthDescriptor.fetchLimit = 1
+        let user = try context.fetch(weightDescriptor).first.map { WorkoutMath.DatedWeight(date: $0.date, kg: $0.kg) }
+        let health = try context.fetch(healthDescriptor).first.flatMap { row in
+            row.bodyMassKg.map { WorkoutMath.DatedWeight(date: row.day, kg: $0) }
+        }
+        return WorkoutMath.bodyWeightKg(userEntry: user, health: health)
     }
 
     private static func historyRecords(

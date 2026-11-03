@@ -41,6 +41,7 @@ struct ActiveSessionView: View {
 
     @Environment(\.modelContext) private var context
     @Environment(WorkoutLiveActivityController.self) private var live
+    @Environment(HealthSyncService.self) private var health
     @Query(sort: \CustomExercise.createdAt) private var customExercises: [CustomExercise]
     @State private var catalog = ExerciseCatalog(seed: .shared)
     @State private var previousByRef: [String: [SetValue]] = [:]
@@ -275,6 +276,7 @@ struct ActiveSessionView: View {
             let summary = try WorkoutSessionService.finish(session, catalog: catalog, in: context)
             rest.skip()
             live.sync()
+            health.writeWorkoutInBackground(for: session, in: context)
             finishedSummary = summary
         } catch {
             saveFailed = true

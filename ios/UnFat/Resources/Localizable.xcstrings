@@ -1,6 +1,45 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
+    "Adım, aktif enerji ve kilo okunur; antrenmanlar kaydedilir." : {
+      "comment" : "Onboarding permissions: Health row detail."
+    },
+    "Aç" : {
+      "comment" : "Onboarding permissions: button that asks for notification permission."
+    },
+    "Açık" : {
+      "comment" : "Onboarding permissions: notifications are on."
+    },
+    "adım" : {
+      "comment" : "Today health row: unit after the step count."
+    },
+    "Bağlan" : {
+      "comment" : "Onboarding permissions: button that asks for Health access."
+    },
+    "Bağlandı" : {
+      "comment" : "Onboarding permissions: Health was connected."
+    },
+    "Bildirimler" : {
+      "comment" : "Onboarding permissions: notifications row title."
+    },
+    "Dinlenme bitince haber verir." : {
+      "comment" : "Onboarding permissions: notifications row detail."
+    },
+    "İkisi de isteğe bağlı. Sonra Ayarlar'dan değiştirebilirsin." : {
+      "comment" : "Onboarding permissions: list footer."
+    },
+    "İzinler" : {
+      "comment" : "Onboarding step title: permissions."
+    },
+    "kcal aktif" : {
+      "comment" : "Today health row: unit after the active energy amount."
+    },
+    "Sağlık" : {
+      "comment" : "Onboarding permissions: Health row title."
+    },
+    "Sağlık'a bağlan" : {
+      "comment" : "Today row that asks for Health access."
+    },
     "%@ / %@ g" : {
       "comment" : "Macro bar value: eaten grams / target grams."
     },

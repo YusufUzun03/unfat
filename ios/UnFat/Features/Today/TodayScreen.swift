@@ -5,8 +5,10 @@ import SwiftUI
 /// Tap edits an entry, swipe deletes it, the context menu pins the food as a favorite.
 struct TodayScreen: View {
     @Environment(\.modelContext) private var context
+    @Environment(HealthSyncService.self) private var health
     @Query private var entries: [FoodEntry]
     @Query private var profiles: [UserProfile]
+    @Query private var healthDays: [HealthDaySummary]
     @State private var editingEntry: FoodEntry?
     @State private var savedTick = 0
     @State private var isCopyConfirmationPresented = false
@@ -16,6 +18,10 @@ struct TodayScreen: View {
         var descriptor = FetchDescriptor<FoodEntry>(sortBy: [SortDescriptor(\FoodEntry.loggedAt, order: .reverse)])
         descriptor.fetchLimit = 300
         _entries = Query(descriptor)
+
+        var healthDescriptor = FetchDescriptor<HealthDaySummary>(sortBy: [SortDescriptor(\HealthDaySummary.day, order: .reverse)])
+        healthDescriptor.fetchLimit = 7
+        _healthDays = Query(healthDescriptor)
     }
 
     private var todayEntries: [FoodEntry] {
@@ -28,6 +34,11 @@ struct TodayScreen: View {
 
     private var profile: UserProfile? { profiles.first }
 
+    /// Today's Health numbers; nil until a read brought steps or active energy.
+    private var todayHealth: HealthDaySummary? {
+        healthDays.first { Calendar.current.isDateInToday($0.day) && ($0.steps != nil || $0.activeKcal != nil) }
+    }
+
     var body: some View {
         let today = todayEntries
         let totals = FoodLogService.totals(of: today)
@@ -35,6 +46,17 @@ struct TodayScreen: View {
             List {
                 Section {
                     header(totals)
+                    if let todayHealth {
+                        HealthDayRow(steps: todayHealth.steps, activeKcal: todayHealth.activeKcal)
+                    }
+                    if health.needsConnection {
+                        Button {
+                            Task { await health.connect(in: context) }
+                        } label: {
+                            Label("Sağlık'a bağlan", systemImage: "heart")
+                                .foregroundStyle(Palette.accent)
+                        }
+                    }
                 }
                 Section("Bugün yediklerin") {
                     if today.isEmpty {
@@ -66,6 +88,7 @@ struct TodayScreen: View {
             Text("Bilgilerin kaydedilirken bir hata oluştu. Tekrar dene.")
         }
         .sensoryFeedback(Haptics.foodLogged, trigger: savedTick)
+        .task { await health.refresh(in: context) }
     }
 
     // MARK: - Pieces
@@ -152,6 +175,38 @@ struct TodayScreen: View {
             }
         } catch {
             actionFailed = true
+        }
+    }
+}
+
+/// One compact line under the calorie ring: steps and active energy from Health, units in secondary color.
+private struct HealthDayRow: View {
+    let steps: Int?
+    let activeKcal: Double?
+
+    var body: some View {
+        HStack(spacing: Spacing.md) {
+            if let steps {
+                metric(symbol: "figure.walk", value: steps.formatted(), unit: "adım")
+            }
+            if let activeKcal {
+                metric(symbol: "flame", value: activeKcal.formatted(.number.precision(.fractionLength(0))), unit: "kcal aktif")
+            }
+            Spacer(minLength: 0)
+        }
+        .font(.subheadline)
+        .accessibilityElement(children: .combine)
+    }
+
+    private func metric(symbol: String, value: String, unit: LocalizedStringKey) -> some View {
+        HStack(spacing: Spacing.xxs) {
+            Image(systemName: symbol)
+                .foregroundStyle(Palette.secondaryLabel)
+                .accessibilityHidden(true)
+            Text(value)
+                .roundedNumbers()
+            Text(unit)
+                .foregroundStyle(Palette.secondaryLabel)
         }
     }
 }

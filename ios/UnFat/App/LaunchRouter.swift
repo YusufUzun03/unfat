@@ -42,6 +42,7 @@ enum LaunchRoute: String, CaseIterable, Sendable {
     case onboardingActivity = "onboarding-activity"
     case onboardingGoal = "onboarding-goal"
     case onboardingTargets = "onboarding-targets"
+    case onboardingPermissions = "onboarding-permissions"
     case goalEditor = "goal-editor"
     case workoutEmpty = "workout-empty"
     case programEditor = "program-editor"
@@ -77,6 +78,7 @@ enum LaunchRoute: String, CaseIterable, Sendable {
         case .onboardingActivity: .screen(.onboarding(.activity))
         case .onboardingGoal: .screen(.onboarding(.goal))
         case .onboardingTargets: .screen(.onboarding(.targets))
+        case .onboardingPermissions: .screen(.onboarding(.permissions))
         case .goalEditor: .screen(.goalEditor)
         case .workoutEmpty: .screen(.workout(.empty))
         case .programEditor: .screen(.workout(.programEditor))
