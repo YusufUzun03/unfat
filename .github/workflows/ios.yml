@@ -67,7 +67,11 @@ jobs:
           echo "Testing on $SIM_NAME ($SIM_UDID)"
           xcodebuild test -project UnFat.xcodeproj -scheme UnFat \
             -destination "id=$SIM_UDID" \
-            CODE_SIGNING_ALLOWED=NO | tail -n 100
+            CODE_SIGNING_ALLOWED=NO > "$RUNNER_TEMP/test.log" 2>&1 || status=$?
+          # Compiler errors scroll out of a plain tail; print them first.
+          grep -E "error:" "$RUNNER_TEMP/test.log" | sort -u | head -n 60 || true
+          tail -n 60 "$RUNNER_TEMP/test.log"
+          exit ${status:-0}
 
   archive:
     if: github.event_name == 'workflow_dispatch' && (inputs.target == 'device-ipa' || inputs.target == 'testflight')
