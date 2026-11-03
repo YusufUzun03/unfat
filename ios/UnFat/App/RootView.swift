@@ -5,10 +5,25 @@ struct RootView: View {
     @State private var isAddSheetPresented = false
     /// Tab requested by the DEBUG launch router; always nil in Release.
     private let launchTab: AppTab?
+    #if DEBUG
+    /// Full-screen DEBUG screen requested by the launch router (e.g. the gallery).
+    private let launchScreen: DebugScreen?
+    @State private var debugScreen: DebugScreen? = nil
+    #endif
 
     init() {
         #if DEBUG
-        launchTab = LaunchRouter.route()?.tab
+        switch LaunchRouter.route()?.destination {
+        case .tab(let tab):
+            launchTab = tab
+            launchScreen = nil
+        case .screen(let screen):
+            launchTab = nil
+            launchScreen = screen
+        case nil:
+            launchTab = nil
+            launchScreen = nil
+        }
         #else
         launchTab = nil
         #endif
@@ -46,6 +61,16 @@ struct RootView: View {
             if launchTab == .add {
                 isAddSheetPresented = true
             }
+            #if DEBUG
+            if let launchScreen {
+                debugScreen = launchScreen
+            }
+            #endif
         }
+        #if DEBUG
+        .fullScreenCover(item: $debugScreen) { screen in
+            DebugScreenView(screen: screen)
+        }
+        #endif
     }
 }

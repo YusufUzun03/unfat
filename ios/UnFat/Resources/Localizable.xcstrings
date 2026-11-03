@@ -1,6 +1,15 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
+    "%@ / %@ g" : {
+      "comment" : "Macro bar value: eaten grams / target grams."
+    },
+    "%@ kcal" : {
+      "comment" : "Energy amount with unit, e.g. in a food entry row."
+    },
+    "+15 sn" : {
+      "comment" : "Rest timer button: add 15 seconds."
+    },
     "Antrenman" : {
       "comment" : "Tab title and navigation title of the workout screen."
     },
@@ -10,8 +19,44 @@
     "Ekle" : {
       "comment" : "Search-role tab that opens the add sheet; add sheet title."
     },
+    "Geç" : {
+      "comment" : "Rest timer button: skip the rest."
+    },
+    "Karbonhidrat" : {
+      "comment" : "Macro name (carbohydrate)."
+    },
+    "Protein" : {
+      "comment" : "Macro name."
+    },
+    "Set" : {
+      "comment" : "Column title in the workout set list: set number."
+    },
+    "Set tamam" : {
+      "comment" : "Accessibility label of the set check button; Live Activity button."
+    },
+    "Sil" : {
+      "comment" : "Accessibility label of the keypad delete key."
+    },
+    "Tekrar" : {
+      "comment" : "Column title in the workout set list: repetitions."
+    },
+    "Yağ" : {
+      "comment" : "Macro name (fat)."
+    },
+    "kcal fazla" : {
+      "comment" : "Calorie ring center caption under the kcal-over-target number (shown in secondary color, never red)."
+    },
+    "kcal kaldı" : {
+      "comment" : "Calorie ring center caption under the remaining kcal number."
+    },
+    "kg" : {
+      "comment" : "Column title in the workout set list: weight in kilograms."
+    },
     "İlerleme" : {
       "comment" : "Tab title and navigation title of the progress screen."
+    },
+    "−15 sn" : {
+      "comment" : "Rest timer button: subtract 15 seconds."
     }
   },
   "version" : "1.0"

@@ -38,3 +38,6 @@
 - `ios/UnFatCore/Sources/UnFatCore/Workout.swift` — MET kcal, Epley e1RM, PR detection
 - `ios/UnFatCore/Sources/UnFatCore/Units.swift` — unit conversions and display rounding
 - `ios/UnFatCore/Tests/UnFatCoreTests/*.swift` — formula tests with hand-computed values
+- `ios/UnFat/DesignSystem/Tokens/` — Palette (accent + semantic colors), Layout (spacing, radius), Typography (rounded numbers), Motion (springs, Reduce Motion), Haptics
+- `ios/UnFat/DesignSystem/Components/` — CalorieRing, MacroBar, NumberRoll, Keypad (+KeypadInput), ServingChips, RestTimerView, ListRows, PrimaryActionButton
+- `ios/UnFat/Debug/` — DEBUG only: GalleryView, TuningPanel + DesignTuning, DebugScreen (full-screen routes like `gallery`)
