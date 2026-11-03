@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "Antrenman" : {
+      "comment" : "Tab title and navigation title of the workout screen."
+    },
+    "Bugün" : {
+      "comment" : "Tab title and navigation title of the today dashboard."
+    },
+    "Ekle" : {
+      "comment" : "Search-role tab that opens the add sheet; add sheet title."
+    },
+    "İlerleme" : {
+      "comment" : "Tab title and navigation title of the progress screen."
+    }
+  },
+  "version" : "1.0"
+}

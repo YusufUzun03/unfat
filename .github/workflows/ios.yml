@@ -1,0 +1,245 @@
+name: iOS
+
+# No Mac needed: UnFat is generated, built, tested, signed and uploaded on GitHub's macOS runners.
+# - Every push under ios/ runs the `test` job (UnFatCore package tests + simulator unit tests, no signing).
+# - "Run workflow" with target:
+#     compile     -> only the `test` job
+#     device-ipa  -> development-signed IPA artifact (install over USB with go-ios)
+#     testflight  -> app-store-connect export and upload to TestFlight
+#     screenshots -> PNGs of every `-UNFAT_SCREEN` route from an iPhone simulator
+# Required repository secrets for device-ipa / testflight:
+#   APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8 (base64 of the .p8 file).
+# Keep this file name stable: github.run_number is the build number and restarts if the workflow is recreated.
+on:
+  push:
+    paths: ['ios/**', '.github/workflows/ios.yml', '.github/scripts/**']
+  workflow_dispatch:
+    inputs:
+      target:
+        description: What to build
+        type: choice
+        options: [compile, device-ipa, testflight, screenshots]
+        default: compile
+
+permissions:
+  contents: read
+
+env:
+  # Default Xcode on the macos-26 image (actions/runner-images, checked 2026-11-03: 26.6 / 17F113).
+  # If it is missing, the select step falls back to the newest /Applications/Xcode_26*.app.
+  XCODE_APP: /Applications/Xcode_26.6.app
+  BUNDLE_ID: io.github.yusufuzun03.unfat
+
+jobs:
+  test:
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          set -eo pipefail
+          app="$XCODE_APP"
+          if [ ! -d "$app" ]; then
+            app=$(ls -d /Applications/Xcode_26*.app | sort -V | tail -n 1)
+            echo "::warning::$XCODE_APP not found, using $app"
+          fi
+          sudo xcode-select -s "$app/Contents/Developer"
+          xcodebuild -version
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate project
+        working-directory: ios
+        run: xcodegen generate
+      - name: UnFatCore package tests
+        working-directory: ios/UnFatCore
+        run: swift test
+      - name: Pick simulator
+        run: |
+          set -eo pipefail
+          python3 .github/scripts/pick-simulator.py >> "$GITHUB_ENV"
+      - name: Unit tests on simulator (no signing)
+        working-directory: ios
+        run: |
+          set -eo pipefail
+          echo "Testing on $SIM_NAME ($SIM_UDID)"
+          xcodebuild test -project UnFat.xcodeproj -scheme UnFat \
+            -destination "id=$SIM_UDID" \
+            CODE_SIGNING_ALLOWED=NO | tail -n 100
+
+  archive:
+    if: github.event_name == 'workflow_dispatch' && (inputs.target == 'device-ipa' || inputs.target == 'testflight')
+    needs: test
+    runs-on: macos-26
+    timeout-minutes: 40
+    env:
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+      TARGET: ${{ inputs.target }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check secrets
+        run: |
+          for v in APPLE_TEAM_ID ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            if [ -z "${!v}" ]; then echo "::error::Missing repository secret $v"; exit 1; fi
+          done
+      - name: Select Xcode
+        run: |
+          set -eo pipefail
+          app="$XCODE_APP"
+          if [ ! -d "$app" ]; then
+            app=$(ls -d /Applications/Xcode_26*.app | sort -V | tail -n 1)
+            echo "::warning::$XCODE_APP not found, using $app"
+          fi
+          sudo xcode-select -s "$app/Contents/Developer"
+          xcodebuild -version
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Write API key
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          echo "$ASC_KEY_P8" | base64 --decode > "$RUNNER_TEMP/keys/AuthKey_$ASC_KEY_ID.p8"
+      - name: Generate project
+        working-directory: ios
+        run: xcodegen generate
+      - name: Archive (ad hoc signed so entitlements are kept; export re-signs)
+        working-directory: ios
+        run: |
+          set -eo pipefail
+          xcodebuild archive -project UnFat.xcodeproj -scheme UnFat \
+            -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/UnFat.xcarchive" \
+            CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_$ASC_KEY_ID.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" | tail -n 40
+      - name: Fail if entitlements are missing
+        run: |
+          set -eo pipefail
+          app="$RUNNER_TEMP/UnFat.xcarchive/Products/Applications/UnFat.app"
+          appex="$app/PlugIns/UnFatWidgets.appex"
+          codesign -d --entitlements - --xml "$app" > "$RUNNER_TEMP/app-entitlements.plist"
+          codesign -d --entitlements - --xml "$appex" > "$RUNNER_TEMP/appex-entitlements.plist"
+          echo "--- UnFat.app"; plutil -p "$RUNNER_TEMP/app-entitlements.plist"
+          echo "--- UnFatWidgets.appex"; plutil -p "$RUNNER_TEMP/appex-entitlements.plist"
+          missing=0
+          for key in com.apple.developer.healthkit com.apple.security.application-groups \
+                     com.apple.developer.icloud-container-identifiers com.apple.developer.icloud-services; do
+            if ! grep -q "<key>$key</key>" "$RUNNER_TEMP/app-entitlements.plist"; then
+              echo "::error::UnFat.app is missing entitlement $key"; missing=1
+            fi
+          done
+          if ! grep -q "group.io.github.yusufuzun03.unfat" "$RUNNER_TEMP/app-entitlements.plist"; then
+            echo "::error::UnFat.app is missing the App Group id"; missing=1
+          fi
+          if ! grep -q "iCloud.io.github.yusufuzun03.unfat" "$RUNNER_TEMP/app-entitlements.plist"; then
+            echo "::error::UnFat.app is missing the iCloud container id"; missing=1
+          fi
+          if ! grep -q "group.io.github.yusufuzun03.unfat" "$RUNNER_TEMP/appex-entitlements.plist"; then
+            echo "::error::UnFatWidgets.appex is missing the App Group entitlement"; missing=1
+          fi
+          exit $missing
+      - name: Export
+        working-directory: ios
+        run: |
+          set -eo pipefail
+          if [ "$TARGET" = "testflight" ]; then
+            method=app-store-connect; destination=upload
+          else
+            method=debugging; destination=export
+          fi
+          cat > "$RUNNER_TEMP/export.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>$method</string>
+            <key>destination</key><string>$destination</string>
+            <key>teamID</key><string>$APPLE_TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/UnFat.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/export.plist" -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_$ASC_KEY_ID.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" | tail -n 40
+      - name: Upload IPA
+        if: inputs.target == 'device-ipa'
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnFat-ipa
+          path: ${{ runner.temp }}/export/*.ipa
+          retention-days: 3
+          if-no-files-found: error
+      - name: Remove API key
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/keys"
+
+  screenshots:
+    if: github.event_name == 'workflow_dispatch' && inputs.target == 'screenshots'
+    needs: test
+    runs-on: macos-26
+    timeout-minutes: 40
+    env:
+      # Every `-UNFAT_SCREEN` route to capture, in order. Later tasks append names here.
+      SCREENS: today workout progress add
+      # Routes captured a second time in dark appearance.
+      DARK_SCREENS: today
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          set -eo pipefail
+          app="$XCODE_APP"
+          if [ ! -d "$app" ]; then
+            app=$(ls -d /Applications/Xcode_26*.app | sort -V | tail -n 1)
+            echo "::warning::$XCODE_APP not found, using $app"
+          fi
+          sudo xcode-select -s "$app/Contents/Developer"
+          xcodebuild -version
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate project
+        working-directory: ios
+        run: xcodegen generate
+      - name: Pick simulator
+        run: |
+          set -eo pipefail
+          python3 .github/scripts/pick-simulator.py >> "$GITHUB_ENV"
+      - name: Build for simulator (Debug, no signing)
+        working-directory: ios
+        run: |
+          set -eo pipefail
+          xcodebuild build -project UnFat.xcodeproj -scheme UnFat -configuration Debug \
+            -destination "id=$SIM_UDID" -derivedDataPath "$RUNNER_TEMP/dd" \
+            CODE_SIGNING_ALLOWED=NO | tail -n 40
+      - name: Capture screenshots
+        run: |
+          set -eo pipefail
+          app="$RUNNER_TEMP/dd/Build/Products/Debug-iphonesimulator/UnFat.app"
+          out="$RUNNER_TEMP/screenshots"
+          mkdir -p "$out"
+          echo "Capturing on $SIM_NAME ($SIM_UDID)"
+          xcrun simctl boot "$SIM_UDID" || true
+          xcrun simctl bootstatus "$SIM_UDID" -b
+          xcrun simctl install "$SIM_UDID" "$app"
+          capture() { # $1 = route name, $2 = file suffix
+            xcrun simctl launch --terminate-running-process "$SIM_UDID" "$BUNDLE_ID" -UNFAT_SCREEN "$1"
+            sleep 3
+            xcrun simctl io "$SIM_UDID" screenshot "$out/$1-$2.png"
+          }
+          xcrun simctl ui "$SIM_UDID" appearance light
+          for s in $SCREENS; do capture "$s" light; done
+          xcrun simctl ui "$SIM_UDID" appearance dark
+          for s in $DARK_SCREENS; do capture "$s" dark; done
+          ls -l "$out"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: ${{ runner.temp }}/screenshots/*.png
+          retention-days: 7
+          if-no-files-found: error

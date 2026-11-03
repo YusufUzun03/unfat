@@ -1,0 +1,117 @@
+# XcodeGen spec. The .xcodeproj is generated in CI (`xcodegen generate`) and never committed.
+# Info.plist and .entitlements files are written by XcodeGen from the `info` / `entitlements` blocks below.
+name: UnFat
+options:
+  bundleIdPrefix: io.github.yusufuzun03
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "26.0"
+  developmentLanguage: tr
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    MARKETING_VERSION: "0.1.0"
+    # Overridden in CI with CURRENT_PROJECT_VERSION=<run number>; applies to every target.
+    CURRENT_PROJECT_VERSION: "1"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+
+packages:
+  UnFatCore:
+    path: UnFatCore
+
+targets:
+  UnFat:
+    type: application
+    platform: iOS
+    sources:
+      - UnFat
+      - Shared
+    dependencies:
+      - package: UnFatCore
+      - target: UnFatWidgets # app extension, embedded into PlugIns/
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.yusufuzun03.unfat
+        PRODUCT_NAME: UnFat
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        GENERATE_INFOPLIST_FILE: NO
+    entitlements:
+      path: UnFat/UnFat.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
+        com.apple.security.application-groups:
+          - group.io.github.yusufuzun03.unfat
+        com.apple.developer.icloud-container-identifiers:
+          - iCloud.io.github.yusufuzun03.unfat
+        com.apple.developer.icloud-services:
+          - CloudKit
+        aps-environment: development
+    info:
+      path: UnFat/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: tr
+        CFBundleDisplayName: UnFat
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        ITSAppUsesNonExemptEncryption: false
+        NSSupportsLiveActivities: true
+        UIBackgroundModes:
+          - remote-notification
+        NSHealthShareUsageDescription: UnFat, hedeflerini ve günlük özetini hesaplamak için Sağlık'taki kilo, adım ve aktif enerji verilerini okur.
+        NSHealthUpdateUsageDescription: UnFat, tamamladığın antrenmanları ve yaktığın enerjiyi Sağlık'a kaydeder.
+        NSCameraUsageDescription: UnFat, barkod okumak ve yemeğinin fotoğrafını çekmek için kamerayı kullanır.
+        NSPhotoLibraryUsageDescription: UnFat, kalori tahmini için seçtiğin yemek fotoğrafını kullanır.
+    scheme:
+      testTargets:
+        - UnFatTests
+
+  UnFatWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - UnFatWidgets
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.yusufuzun03.unfat.widgets
+        PRODUCT_NAME: UnFatWidgets
+        GENERATE_INFOPLIST_FILE: NO
+    entitlements:
+      path: UnFatWidgets/UnFatWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.io.github.yusufuzun03.unfat
+    info:
+      path: UnFatWidgets/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: tr
+        CFBundleDisplayName: UnFat
+        # Must equal the app's values; both come from the same project-level settings.
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+
+  UnFatTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - UnFatTests
+    dependencies:
+      - target: UnFat # hosted: XcodeGen sets TEST_HOST / BUNDLE_LOADER
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.yusufuzun03.unfat.tests
+        GENERATE_INFOPLIST_FILE: YES

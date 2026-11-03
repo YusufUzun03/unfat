@@ -1,10 +1,33 @@
 # filemap
 
 - `CLAUDE.md` — agent rules, build commands
+- `README.md` — short project overview, no-Mac build approach, links to docs
 - `docs/SPEC.md` — goals, stack, architecture, data model, flows, design decisions
 - `docs/PLAN.md` — ordered tasks with status; update when a task is accepted
 - `docs/research/github-competitors.md` — open-source repos (with licenses), libraries, competitor UX patterns
 - `docs/research/data-and-science.md` — food/exercise data sources, formulas, photo recognition options, App Store health rules
 - `docs/research/ios-stack.md` — stack decision, Live Activity/widget/data/HealthKit details, CI sketch, submission checklist
-- `ios/` — (task 1) XcodeGen project and all Swift code; layout in SPEC "Architecture"
-- `.github/workflows/ios.yml` — (task 1) CI: compile, tests, device IPA, TestFlight, screenshots
+
+## CI
+- `.github/workflows/ios.yml` — CI: `test` job on every push (package + simulator unit tests); dispatch `compile | device-ipa | testflight | screenshots`; ad hoc signed archive + entitlement check; screen list in the `SCREENS` env of the `screenshots` job
+- `.github/scripts/pick-simulator.py` — picks an available iPhone simulator (prefers iPhone 17 Pro Max, newest iOS) and prints `SIM_UDID` / `SIM_NAME` for `$GITHUB_ENV`
+
+## ios/
+- `ios/project.yml` — XcodeGen spec: targets `UnFat`, `UnFatWidgets`, `UnFatTests`, local package `UnFatCore`; Info.plist keys and entitlements (XcodeGen writes `UnFat/Info.plist`, `UnFat/UnFat.entitlements`, `UnFatWidgets/Info.plist`, `UnFatWidgets/UnFatWidgets.entitlements` at generate time)
+- `ios/UnFat/App/UnFatApp.swift` — `@main` app entry
+- `ios/UnFat/App/RootView.swift` — iOS 26 `TabView`: Bugün, Antrenman, İlerleme, search-role Ekle tab that opens the add sheet
+- `ios/UnFat/App/AppTab.swift` — tab identifiers
+- `ios/UnFat/App/LaunchRouter.swift` — DEBUG-only `-UNFAT_SCREEN <name>` parser; `LaunchRoute` lists screenshot routes
+- `ios/UnFat/Features/Today/TodayScreen.swift` — Today placeholder (large title)
+- `ios/UnFat/Features/Workout/WorkoutScreen.swift` — Workout placeholder
+- `ios/UnFat/Features/Progress/ProgressScreen.swift` — Progress placeholder
+- `ios/UnFat/Features/FoodLog/AddSheet.swift` — add sheet placeholder
+- `ios/UnFat/Resources/Localizable.xcstrings` — String Catalog, source language tr
+- `ios/UnFat/Resources/Assets.xcassets` — `AccentColor` (#FF6A3D, light + dark), `AppIcon` (placeholder 1024 PNG, plain accent color)
+- `ios/Shared/AppGroup.swift` — App Group id and container URL (app + widgets)
+- `ios/UnFatWidgets/UnFatWidgetBundle.swift` — `@main` widget bundle
+- `ios/UnFatWidgets/PlaceholderWidget.swift` — temporary static widget showing "UnFat"
+- `ios/UnFatTests/LaunchRouterTests.swift` — hosted unit test (launch argument parsing)
+- `ios/UnFatCore/Package.swift` — local Swift package (tools 6.0, iOS 26 + macOS 15)
+- `ios/UnFatCore/Sources/UnFatCore/CoreInfo.swift` — placeholder public function
+- `ios/UnFatCore/Tests/UnFatCoreTests/CoreInfoTests.swift` — package test
