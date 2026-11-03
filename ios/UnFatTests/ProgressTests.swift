@@ -215,7 +215,7 @@ struct ProgressDataTests {
     @Test func twoWeightEntriesOnTheSameDayAreAllowed() throws {
         try ProgressData.addWeight(kg: 82.4, date: progressDay(0, hour: 7), in: context)
         try ProgressData.addWeight(kg: 82.0, date: progressDay(0, hour: 20), in: context)
-        let entries = try context.fetch(FetchDescriptor<WeightEntry>())
+        let entries = try context.fetch(FetchDescriptor<UnFat.WeightEntry>())
         #expect(entries.count == 2)
         #expect(Set(entries.map(\.kg)) == [82.4, 82.0])
     }
