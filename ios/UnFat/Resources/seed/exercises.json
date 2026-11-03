@@ -1,0 +1,2704 @@
+{
+  "version": 1,
+  "exercises": [
+    {
+      "id": "ex-0001",
+      "nameTr": "Bench press",
+      "nameEn": "Barbell Bench Press - Medium Grip",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0002",
+      "nameTr": "Geniş tutuş bench press",
+      "nameEn": "Wide-Grip Barbell Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0003",
+      "nameTr": "Incline bench press",
+      "nameEn": "Barbell Incline Bench Press - Medium Grip",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0004",
+      "nameTr": "Decline bench press",
+      "nameEn": "Decline Barbell Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0005",
+      "nameTr": "Dumbbell bench press",
+      "nameEn": "Dumbbell Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0006",
+      "nameTr": "Incline dumbbell press",
+      "nameEn": "Incline Dumbbell Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0007",
+      "nameTr": "Decline dumbbell press",
+      "nameEn": "Decline Dumbbell Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0008",
+      "nameTr": "Nötr tutuş incline dumbbell press",
+      "nameEn": "Hammer Grip Incline DB Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0009",
+      "nameTr": "Dumbbell fly",
+      "nameEn": "Dumbbell Flyes",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0010",
+      "nameTr": "Incline dumbbell fly",
+      "nameEn": "Incline Dumbbell Flyes",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0011",
+      "nameTr": "Pec deck",
+      "nameEn": "Butterfly",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0012",
+      "nameTr": "Cable crossover",
+      "nameEn": "Cable Crossover",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0013",
+      "nameTr": "Incline cable fly",
+      "nameEn": "Incline Cable Flye",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0014",
+      "nameTr": "Cable chest press",
+      "nameEn": "Cable Chest Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0015",
+      "nameTr": "Chest press makinesi",
+      "nameEn": "Leverage Chest Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0016",
+      "nameTr": "Incline chest press makinesi",
+      "nameEn": "Leverage Incline Chest Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0017",
+      "nameTr": "Smith makinede bench press",
+      "nameEn": "Smith Machine Bench Press",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0018",
+      "nameTr": "Dumbbell pullover",
+      "nameEn": "Straight-Arm Dumbbell Pullover",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "back",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0019",
+      "nameTr": "Göğüs dips",
+      "nameEn": "Dips - Chest Version",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0020",
+      "nameTr": "Şınav",
+      "nameEn": "Pushups",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0021",
+      "nameTr": "Geniş şınav",
+      "nameEn": "Push-Up Wide",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "core",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0022",
+      "nameTr": "Incline şınav",
+      "nameEn": "Incline Push-Up",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0023",
+      "nameTr": "Decline şınav",
+      "nameEn": "Decline Push-Up",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0024",
+      "nameTr": "Patlayıcı şınav",
+      "nameEn": "Plyo Push-up",
+      "primaryMuscle": "chest",
+      "secondaryMuscles": [
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0025",
+      "nameTr": "Deadlift",
+      "nameEn": "Barbell Deadlift",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "calves",
+        "forearms",
+        "glutes",
+        "hamstrings",
+        "quads"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0026",
+      "nameTr": "Sumo deadlift",
+      "nameEn": "Sumo Deadlift",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "hamstrings",
+        "quads",
+        "forearms",
+        "glutes"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0027",
+      "nameTr": "Romanian deadlift",
+      "nameEn": "Romanian Deadlift",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0028",
+      "nameTr": "Stiff leg deadlift",
+      "nameEn": "Stiff-Legged Barbell Deadlift",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "glutes",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0029",
+      "nameTr": "Dumbbell stiff leg deadlift",
+      "nameEn": "Stiff-Legged Dumbbell Deadlift",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "glutes",
+        "back"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0030",
+      "nameTr": "Trap bar deadlift",
+      "nameEn": "Trap Bar Deadlift",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "quads",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0031",
+      "nameTr": "Rack pull",
+      "nameEn": "Rack Pulls",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "forearms",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0032",
+      "nameTr": "Barbell row",
+      "nameEn": "Bent Over Barbell Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0033",
+      "nameTr": "Dumbbell row",
+      "nameEn": "Bent Over Two-Dumbbell Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0034",
+      "nameTr": "Tek kol dumbbell row",
+      "nameEn": "One-Arm Dumbbell Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0035",
+      "nameTr": "Incline dumbbell row",
+      "nameEn": "Dumbbell Incline Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "forearms",
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0036",
+      "nameTr": "T-bar row",
+      "nameEn": "T-Bar Row with Handle",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0037",
+      "nameTr": "Seated cable row",
+      "nameEn": "Seated Cable Rows",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0038",
+      "nameTr": "Tek kol cable row",
+      "nameEn": "Seated One-arm Cable Pulley Rows",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0039",
+      "nameTr": "High row makinesi",
+      "nameEn": "Leverage High Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0040",
+      "nameTr": "Row makinesi",
+      "nameEn": "Leverage Iso Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0041",
+      "nameTr": "Inverted row",
+      "nameEn": "Inverted Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0042",
+      "nameTr": "Barfiks",
+      "nameEn": "Pullups",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0043",
+      "nameTr": "Ters tutuş barfiks",
+      "nameEn": "Chin-Up",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "forearms"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0044",
+      "nameTr": "Ağırlıklı barfiks",
+      "nameEn": "Weighted Pull Ups",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0045",
+      "nameTr": "Lastik destekli barfiks",
+      "nameEn": "Band Assisted Pull-Up",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "core",
+        "forearms"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0046",
+      "nameTr": "Muscle up",
+      "nameEn": "Muscle Up",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "core",
+        "biceps",
+        "forearms",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0047",
+      "nameTr": "Lat pulldown",
+      "nameEn": "Wide-Grip Lat Pulldown",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0048",
+      "nameTr": "Dar tutuş lat pulldown",
+      "nameEn": "Close-Grip Front Lat Pulldown",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0049",
+      "nameTr": "V-bar pulldown",
+      "nameEn": "V-Bar Pulldown",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0050",
+      "nameTr": "Ters tutuş pulldown",
+      "nameEn": "Underhand Cable Pulldowns",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0051",
+      "nameTr": "Tek kol lat pulldown",
+      "nameEn": "One Arm Lat Pulldown",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0052",
+      "nameTr": "Straight arm pulldown",
+      "nameEn": "Straight-Arm Pulldown",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0053",
+      "nameTr": "Barbell pullover",
+      "nameEn": "Bent-Arm Barbell Pullover",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0054",
+      "nameTr": "Hyperextension",
+      "nameEn": "Hyperextensions (Back Extensions)",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0055",
+      "nameTr": "Good morning",
+      "nameEn": "Good Morning",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "core",
+        "glutes",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0056",
+      "nameTr": "Barbell shrug",
+      "nameEn": "Barbell Shrug",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0057",
+      "nameTr": "Dumbbell shrug",
+      "nameEn": "Dumbbell Shrug",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0058",
+      "nameTr": "Military press",
+      "nameEn": "Standing Military Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0059",
+      "nameTr": "Oturarak barbell omuz press",
+      "nameEn": "Seated Barbell Military Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0060",
+      "nameTr": "Push press",
+      "nameEn": "Push Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "quads",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0061",
+      "nameTr": "Dumbbell omuz press",
+      "nameEn": "Dumbbell Shoulder Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0062",
+      "nameTr": "Oturarak dumbbell omuz press",
+      "nameEn": "Seated Dumbbell Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0063",
+      "nameTr": "Ayakta dumbbell omuz press",
+      "nameEn": "Standing Dumbbell Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0064",
+      "nameTr": "Arnold press",
+      "nameEn": "Arnold Dumbbell Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0065",
+      "nameTr": "Omuz press makinesi",
+      "nameEn": "Machine Shoulder (Military) Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0066",
+      "nameTr": "Smith makinede omuz press",
+      "nameEn": "Smith Machine Overhead Shoulder Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0067",
+      "nameTr": "Lateral raise",
+      "nameEn": "Side Lateral Raise",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0068",
+      "nameTr": "Oturarak lateral raise",
+      "nameEn": "Seated Side Lateral Raise",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0069",
+      "nameTr": "Cable lateral raise",
+      "nameEn": "Cable Seated Lateral Raise",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "back"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0070",
+      "nameTr": "Lastikle lateral raise",
+      "nameEn": "Lateral Raise - With Bands",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "band",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0071",
+      "nameTr": "Front raise",
+      "nameEn": "Front Dumbbell Raise",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0072",
+      "nameTr": "Plakayla front raise",
+      "nameEn": "Front Plate Raise",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0073",
+      "nameTr": "Reverse fly",
+      "nameEn": "Reverse Flyes",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0074",
+      "nameTr": "Reverse pec deck",
+      "nameEn": "Reverse Machine Flyes",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0075",
+      "nameTr": "Cable rear delt fly",
+      "nameEn": "Cable Rear Delt Fly",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0076",
+      "nameTr": "Face pull",
+      "nameEn": "Face Pull",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "back"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0077",
+      "nameTr": "Band pull apart",
+      "nameEn": "Band Pull Apart",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "back"
+      ],
+      "equipment": "band",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0078",
+      "nameTr": "Upright row",
+      "nameEn": "Upright Barbell Row",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0079",
+      "nameTr": "Dumbbell upright row",
+      "nameEn": "Standing Dumbbell Upright Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "biceps",
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0080",
+      "nameTr": "Cable dış rotasyon",
+      "nameEn": "External Rotation with Cable",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0081",
+      "nameTr": "Amuda kalkış şınav",
+      "nameEn": "Handstand Push-Ups",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "triceps"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0082",
+      "nameTr": "Clean and press",
+      "nameEn": "Clean and Press",
+      "primaryMuscle": "shoulders",
+      "secondaryMuscles": [
+        "core",
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back",
+        "quads",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0083",
+      "nameTr": "Barbell curl",
+      "nameEn": "Barbell Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0084",
+      "nameTr": "EZ bar curl",
+      "nameEn": "EZ-Bar Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0085",
+      "nameTr": "Dar tutuş EZ bar curl",
+      "nameEn": "Close-Grip EZ Bar Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0086",
+      "nameTr": "Dumbbell curl",
+      "nameEn": "Dumbbell Bicep Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0087",
+      "nameTr": "Alternatif dumbbell curl",
+      "nameEn": "Dumbbell Alternate Bicep Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0088",
+      "nameTr": "Hammer curl",
+      "nameEn": "Hammer Curls",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0089",
+      "nameTr": "Incline dumbbell curl",
+      "nameEn": "Incline Dumbbell Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0090",
+      "nameTr": "Konsantrasyon curl",
+      "nameEn": "Concentration Curls",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0091",
+      "nameTr": "Preacher curl",
+      "nameEn": "Preacher Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0092",
+      "nameTr": "Tek kol preacher curl",
+      "nameEn": "One Arm Dumbbell Preacher Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0093",
+      "nameTr": "Makinede preacher curl",
+      "nameEn": "Machine Preacher Curls",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0094",
+      "nameTr": "Biceps curl makinesi",
+      "nameEn": "Machine Bicep Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0095",
+      "nameTr": "Cable curl",
+      "nameEn": "Standing Biceps Cable Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0096",
+      "nameTr": "Halatla hammer curl",
+      "nameEn": "Cable Hammer Curls - Rope Attachment",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0097",
+      "nameTr": "Spider curl",
+      "nameEn": "Spider Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0098",
+      "nameTr": "Zottman curl",
+      "nameEn": "Zottman Curl",
+      "primaryMuscle": "biceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0099",
+      "nameTr": "Ters tutuş barbell curl",
+      "nameEn": "Reverse Barbell Curl",
+      "primaryMuscle": "forearms",
+      "secondaryMuscles": [
+        "biceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0100",
+      "nameTr": "Dar tutuş bench press",
+      "nameEn": "Close-Grip Barbell Bench Press",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0101",
+      "nameTr": "Triceps pushdown",
+      "nameEn": "Triceps Pushdown",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0102",
+      "nameTr": "Halatla triceps pushdown",
+      "nameEn": "Triceps Pushdown - Rope Attachment",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0103",
+      "nameTr": "V-bar triceps pushdown",
+      "nameEn": "Triceps Pushdown - V-Bar Attachment",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0104",
+      "nameTr": "Halatla overhead triceps extension",
+      "nameEn": "Triceps Overhead Extension with Rope",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0105",
+      "nameTr": "Skull crusher",
+      "nameEn": "EZ-Bar Skullcrusher",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "forearms"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0106",
+      "nameTr": "Lying triceps extension",
+      "nameEn": "Lying Triceps Press",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0107",
+      "nameTr": "Dumbbell lying triceps extension",
+      "nameEn": "Lying Dumbbell Tricep Extension",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0108",
+      "nameTr": "Dumbbell overhead triceps extension",
+      "nameEn": "Standing Dumbbell Triceps Extension",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0109",
+      "nameTr": "Triceps kickback",
+      "nameEn": "Tricep Dumbbell Kickback",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0110",
+      "nameTr": "JM press",
+      "nameEn": "JM Press",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0111",
+      "nameTr": "Triceps dips",
+      "nameEn": "Dips - Triceps Version",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0112",
+      "nameTr": "Paralel bar dips",
+      "nameEn": "Parallel Bar Dip",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0113",
+      "nameTr": "Bench dips",
+      "nameEn": "Bench Dips",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0114",
+      "nameTr": "Dips makinesi",
+      "nameEn": "Dip Machine",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0115",
+      "nameTr": "Triceps extension makinesi",
+      "nameEn": "Machine Triceps Extension",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0116",
+      "nameTr": "Elmas şınav",
+      "nameEn": "Push-Ups - Close Triceps Position",
+      "primaryMuscle": "triceps",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0117",
+      "nameTr": "Barbell bilek curl",
+      "nameEn": "Palms-Up Barbell Wrist Curl Over A Bench",
+      "primaryMuscle": "forearms",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0118",
+      "nameTr": "Ters barbell bilek curl",
+      "nameEn": "Palms-Down Wrist Curl Over A Bench",
+      "primaryMuscle": "forearms",
+      "secondaryMuscles": [],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0119",
+      "nameTr": "Dumbbell bilek curl",
+      "nameEn": "Seated Dumbbell Palms-Up Wrist Curl",
+      "primaryMuscle": "forearms",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0120",
+      "nameTr": "Bilek rulosu",
+      "nameEn": "Wrist Roller",
+      "primaryMuscle": "forearms",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0121",
+      "nameTr": "Squat",
+      "nameEn": "Barbell Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0122",
+      "nameTr": "Front squat",
+      "nameEn": "Front Barbell Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0123",
+      "nameTr": "Box squat",
+      "nameEn": "Box Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0124",
+      "nameTr": "Geniş duruş squat",
+      "nameEn": "Wide Stance Barbell Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0125",
+      "nameTr": "Overhead squat",
+      "nameEn": "Overhead Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "core",
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0126",
+      "nameTr": "Smith makinede squat",
+      "nameEn": "Smith Machine Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0127",
+      "nameTr": "Hack squat",
+      "nameEn": "Hack Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0128",
+      "nameTr": "Goblet squat",
+      "nameEn": "Goblet Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "shoulders"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0129",
+      "nameTr": "Dumbbell squat",
+      "nameEn": "Dumbbell Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0130",
+      "nameTr": "Sumo squat",
+      "nameEn": "Plie Dumbbell Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "core",
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0131",
+      "nameTr": "Ağırlıksız squat",
+      "nameEn": "Bodyweight Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0132",
+      "nameTr": "Jump squat",
+      "nameEn": "Freehand Jump Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 8.0
+    },
+    {
+      "id": "ex-0133",
+      "nameTr": "Leg press",
+      "nameEn": "Leg Press",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0134",
+      "nameTr": "Leg extension",
+      "nameEn": "Leg Extensions",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0135",
+      "nameTr": "Barbell lunge",
+      "nameEn": "Barbell Lunge",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0136",
+      "nameTr": "Barbell yürüyüş lunge",
+      "nameEn": "Barbell Walking Lunge",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0137",
+      "nameTr": "Dumbbell lunge",
+      "nameEn": "Dumbbell Lunges",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0138",
+      "nameTr": "Geri lunge",
+      "nameEn": "Dumbbell Rear Lunge",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0139",
+      "nameTr": "Yürüyüş lunge",
+      "nameEn": "Bodyweight Walking Lunge",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0140",
+      "nameTr": "Bulgarian split squat",
+      "nameEn": "Split Squat with Dumbbells",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0141",
+      "nameTr": "Dumbbell step up",
+      "nameEn": "Dumbbell Step Ups",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0142",
+      "nameTr": "Sissy squat",
+      "nameEn": "Weighted Sissy Squat",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0143",
+      "nameTr": "Adductor makinesi",
+      "nameEn": "Thigh Adductor",
+      "primaryMuscle": "quads",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0144",
+      "nameTr": "Abductor makinesi",
+      "nameEn": "Thigh Abductor",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0145",
+      "nameTr": "Lying leg curl",
+      "nameEn": "Lying Leg Curls",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0146",
+      "nameTr": "Seated leg curl",
+      "nameEn": "Seated Leg Curl",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0147",
+      "nameTr": "Glute ham raise",
+      "nameEn": "Glute Ham Raise",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "calves",
+        "glutes"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0148",
+      "nameTr": "Nordic curl",
+      "nameEn": "Natural Glute Ham Raise",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "calves",
+        "glutes",
+        "back"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0149",
+      "nameTr": "Tek bacak deadlift",
+      "nameEn": "Kettlebell One-Legged Deadlift",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "glutes",
+        "back"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0150",
+      "nameTr": "Hip thrust",
+      "nameEn": "Barbell Hip Thrust",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "calves",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0151",
+      "nameTr": "Barbell glute bridge",
+      "nameEn": "Barbell Glute Bridge",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "calves",
+        "hamstrings"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0152",
+      "nameTr": "Glute bridge",
+      "nameEn": "Butt Lift (Bridge)",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0153",
+      "nameTr": "Tek bacak glute bridge",
+      "nameEn": "Single Leg Glute Bridge",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0154",
+      "nameTr": "Cable kickback",
+      "nameEn": "One-Legged Cable Kickback",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0155",
+      "nameTr": "Donkey kick",
+      "nameEn": "Glute Kickback",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0156",
+      "nameTr": "Cable pull through",
+      "nameEn": "Pull Through",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0157",
+      "nameTr": "Lastikle yan yürüyüş",
+      "nameEn": "Monster Walk",
+      "primaryMuscle": "glutes",
+      "secondaryMuscles": [],
+      "equipment": "band",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0158",
+      "nameTr": "Reverse hyperextension",
+      "nameEn": "Reverse Hyperextension",
+      "primaryMuscle": "hamstrings",
+      "secondaryMuscles": [
+        "calves",
+        "glutes"
+      ],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0159",
+      "nameTr": "Ayakta kalf",
+      "nameEn": "Standing Calf Raises",
+      "primaryMuscle": "calves",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0160",
+      "nameTr": "Oturarak kalf",
+      "nameEn": "Seated Calf Raise",
+      "primaryMuscle": "calves",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0161",
+      "nameTr": "Leg presste kalf",
+      "nameEn": "Calf Press On The Leg Press Machine",
+      "primaryMuscle": "calves",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0162",
+      "nameTr": "Dumbbell kalf",
+      "nameEn": "Standing Dumbbell Calf Raise",
+      "primaryMuscle": "calves",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0163",
+      "nameTr": "Donkey kalf",
+      "nameEn": "Donkey Calf Raises",
+      "primaryMuscle": "calves",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0164",
+      "nameTr": "Mekik",
+      "nameEn": "Crunches",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0165",
+      "nameTr": "Tam mekik",
+      "nameEn": "Sit-Up",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0166",
+      "nameTr": "Decline mekik",
+      "nameEn": "Decline Crunch",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0167",
+      "nameTr": "Ters mekik",
+      "nameEn": "Reverse Crunch",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0168",
+      "nameTr": "Yan mekik",
+      "nameEn": "Oblique Crunches",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0169",
+      "nameTr": "Bisiklet mekik",
+      "nameEn": "Air Bike",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0170",
+      "nameTr": "Cable crunch",
+      "nameEn": "Cable Crunch",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0171",
+      "nameTr": "Karın makinesi",
+      "nameEn": "Ab Crunch Machine",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0172",
+      "nameTr": "Plank",
+      "nameEn": "Plank",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0173",
+      "nameTr": "Yan plank",
+      "nameEn": "Side Bridge",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0174",
+      "nameTr": "Asılı bacak kaldırma",
+      "nameEn": "Hanging Leg Raise",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0175",
+      "nameTr": "Bacak kaldırma",
+      "nameEn": "Flat Bench Lying Leg Raise",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0176",
+      "nameTr": "Paralelde diz çekme",
+      "nameEn": "Knee/Hip Raise On Parallel Bars",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0177",
+      "nameTr": "Russian twist",
+      "nameEn": "Russian Twist",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "back"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0178",
+      "nameTr": "Cable wood chop",
+      "nameEn": "Standing Cable Wood Chop",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0179",
+      "nameTr": "Pallof press",
+      "nameEn": "Pallof Press",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "chest",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "cable",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0180",
+      "nameTr": "Ab wheel",
+      "nameEn": "Ab Roller",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "shoulders"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0181",
+      "nameTr": "Dead bug",
+      "nameEn": "Dead Bug",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0182",
+      "nameTr": "Makas",
+      "nameEn": "Flutter Kicks",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0183",
+      "nameTr": "Dumbbell yan eğilme",
+      "nameEn": "Dumbbell Side Bend",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "dumbbell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0184",
+      "nameTr": "Kettlebell windmill",
+      "nameEn": "Kettlebell Windmill",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [
+        "glutes",
+        "hamstrings",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0185",
+      "nameTr": "V-up",
+      "nameEn": "Jackknife Sit-Up",
+      "primaryMuscle": "core",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "strength",
+      "met": 3.8
+    },
+    {
+      "id": "ex-0186",
+      "nameTr": "Power clean",
+      "nameEn": "Power Clean",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "forearms",
+        "glutes",
+        "back",
+        "quads",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0187",
+      "nameTr": "Clean and jerk",
+      "nameEn": "Clean and Jerk",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "shoulders",
+        "core",
+        "glutes",
+        "hamstrings",
+        "back",
+        "quads",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0188",
+      "nameTr": "Snatch",
+      "nameEn": "Snatch",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "quads",
+        "biceps",
+        "glutes",
+        "hamstrings",
+        "back",
+        "shoulders",
+        "triceps"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0189",
+      "nameTr": "Hang clean",
+      "nameEn": "Hang Clean",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "quads",
+        "calves",
+        "forearms",
+        "glutes",
+        "hamstrings",
+        "back",
+        "shoulders"
+      ],
+      "equipment": "barbell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0190",
+      "nameTr": "Tek kol kettlebell swing",
+      "nameEn": "One-Arm Kettlebell Swings",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "hamstrings",
+        "calves",
+        "glutes",
+        "back",
+        "shoulders"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0191",
+      "nameTr": "Kettlebell thruster",
+      "nameEn": "Kettlebell Thruster",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "shoulders",
+        "quads",
+        "triceps"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0192",
+      "nameTr": "Turkish get-up",
+      "nameEn": "Kettlebell Turkish Get-Up (Squat style)",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "shoulders",
+        "core",
+        "calves",
+        "hamstrings",
+        "quads",
+        "triceps"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0193",
+      "nameTr": "Renegade row",
+      "nameEn": "Alternating Renegade Row",
+      "primaryMuscle": "back",
+      "secondaryMuscles": [
+        "core",
+        "biceps",
+        "chest",
+        "triceps"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0194",
+      "nameTr": "Kettlebell clean",
+      "nameEn": "Two-Arm Kettlebell Clean",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "shoulders",
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0195",
+      "nameTr": "Kettlebell snatch",
+      "nameEn": "One-Arm Kettlebell Snatch",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "shoulders",
+        "calves",
+        "glutes",
+        "hamstrings",
+        "back",
+        "triceps"
+      ],
+      "equipment": "kettlebell",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0196",
+      "nameTr": "Balyoz vuruşu",
+      "nameEn": "Sledgehammer Swings",
+      "primaryMuscle": "fullBody",
+      "secondaryMuscles": [
+        "core",
+        "calves",
+        "forearms",
+        "back",
+        "shoulders"
+      ],
+      "equipment": "other",
+      "kind": "strength",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0197",
+      "nameTr": "Koşu bandında yürüyüş",
+      "nameEn": "Treadmill Walking (5.6 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 4.3
+    },
+    {
+      "id": "ex-0198",
+      "nameTr": "Koşu bandında hafif koşu",
+      "nameEn": "Treadmill Jogging (8 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 8.3
+    },
+    {
+      "id": "ex-0199",
+      "nameTr": "Koşu bandı",
+      "nameEn": "Treadmill Running (9.7 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 9.8
+    },
+    {
+      "id": "ex-0200",
+      "nameTr": "Tempolu yürüyüş",
+      "nameEn": "Brisk Walking (6.4 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0201",
+      "nameTr": "Yürüyüş",
+      "nameEn": "Walking (4.8 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 3.5
+    },
+    {
+      "id": "ex-0202",
+      "nameTr": "Koşu",
+      "nameEn": "Running (9.7 km/h)",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 9.8
+    },
+    {
+      "id": "ex-0203",
+      "nameTr": "Doğa yürüyüşü",
+      "nameEn": "Hiking, cross country",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0204",
+      "nameTr": "Kondisyon bisikleti",
+      "nameEn": "Stationary Cycling, moderate",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 6.8
+    },
+    {
+      "id": "ex-0205",
+      "nameTr": "Yatay bisiklet",
+      "nameEn": "Recumbent Stationary Cycling",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0206",
+      "nameTr": "Bisiklet",
+      "nameEn": "Bicycling, 16-19 km/h",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 6.8
+    },
+    {
+      "id": "ex-0207",
+      "nameTr": "Spinning",
+      "nameEn": "Indoor Cycling Class",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 8.5
+    },
+    {
+      "id": "ex-0208",
+      "nameTr": "Eliptik bisiklet",
+      "nameEn": "Elliptical Trainer, moderate",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 5.0
+    },
+    {
+      "id": "ex-0209",
+      "nameTr": "Kürek makinesi",
+      "nameEn": "Rowing Machine, moderate",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 7.3
+    },
+    {
+      "id": "ex-0210",
+      "nameTr": "Merdiven makinesi",
+      "nameEn": "Stair-Treadmill Ergometer",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 9.0
+    },
+    {
+      "id": "ex-0211",
+      "nameTr": "Step mill",
+      "nameEn": "Stair Climbing Machine",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "machine",
+      "kind": "cardio",
+      "met": 9.0
+    },
+    {
+      "id": "ex-0212",
+      "nameTr": "İp atlama",
+      "nameEn": "Rope Jumping, moderate",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 11.8
+    },
+    {
+      "id": "ex-0213",
+      "nameTr": "Battle rope",
+      "nameEn": "Battling Ropes",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 10.3
+    },
+    {
+      "id": "ex-0214",
+      "nameTr": "Mountain climber",
+      "nameEn": "Mountain Climbers",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "cardio",
+      "met": 8.0
+    },
+    {
+      "id": "ex-0215",
+      "nameTr": "HIIT",
+      "nameEn": "High Intensity Interval Training",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "cardio",
+      "met": 8.0
+    },
+    {
+      "id": "ex-0216",
+      "nameTr": "Yüzme",
+      "nameEn": "Swimming laps, freestyle, moderate",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 6.0
+    },
+    {
+      "id": "ex-0217",
+      "nameTr": "Futbol",
+      "nameEn": "Soccer, casual",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 7.0
+    },
+    {
+      "id": "ex-0218",
+      "nameTr": "Basketbol",
+      "nameEn": "Basketball, general",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 6.5
+    },
+    {
+      "id": "ex-0219",
+      "nameTr": "Tenis",
+      "nameEn": "Tennis, general",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 7.3
+    },
+    {
+      "id": "ex-0220",
+      "nameTr": "Yoga",
+      "nameEn": "Yoga, Hatha",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "cardio",
+      "met": 2.3
+    },
+    {
+      "id": "ex-0221",
+      "nameTr": "Pilates",
+      "nameEn": "Pilates, general",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "cardio",
+      "met": 3.0
+    },
+    {
+      "id": "ex-0222",
+      "nameTr": "Esneme",
+      "nameEn": "Stretching, mild",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "bodyweight",
+      "kind": "cardio",
+      "met": 2.3
+    },
+    {
+      "id": "ex-0223",
+      "nameTr": "Dans",
+      "nameEn": "Dancing, aerobic, general",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 7.3
+    },
+    {
+      "id": "ex-0224",
+      "nameTr": "Boks",
+      "nameEn": "Boxing, punching bag",
+      "primaryMuscle": "cardio",
+      "secondaryMuscles": [],
+      "equipment": "other",
+      "kind": "cardio",
+      "met": 5.5
+    }
+  ]
+}
