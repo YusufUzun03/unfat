@@ -209,12 +209,15 @@ enum WorkoutSessionService {
 
     /// Removes a set and renumbers the rest.
     static func deleteSet(_ log: SetLog, from exercise: SessionExercise, in context: ModelContext) {
+        // Unlink first: a deleted model stays in the relationship array until the next save.
+        exercise.setLogs?.removeAll { $0.uuid == log.uuid }
         context.delete(log)
-        let remaining = exercise.sortedSetLogs.filter { $0.uuid != log.uuid }
+        let remaining = exercise.sortedSetLogs
         for (index, set) in remaining.enumerated() { set.order = index }
     }
 
     static func deleteExercise(_ exercise: SessionExercise, in context: ModelContext) {
+        exercise.session?.exercises?.removeAll { $0.uuid == exercise.uuid }
         context.delete(exercise)
     }
 
