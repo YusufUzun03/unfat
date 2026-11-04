@@ -20,6 +20,11 @@ on:
         type: choice
         options: [compile, device-ipa, testflight, screenshots]
         default: compile
+      runner:
+        description: macOS image (macos-15 has Xcode 26.3 and is a fallback when macos-26 has no capacity)
+        type: choice
+        options: [macos-26, macos-15]
+        default: macos-26
 
 permissions:
   contents: read
@@ -32,7 +37,7 @@ env:
 
 jobs:
   test:
-    runs-on: macos-26
+    runs-on: ${{ inputs.runner || 'macos-26' }}
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
@@ -76,7 +81,7 @@ jobs:
   archive:
     if: github.event_name == 'workflow_dispatch' && (inputs.target == 'device-ipa' || inputs.target == 'testflight')
     needs: test
-    runs-on: macos-26
+    runs-on: ${{ inputs.runner || 'macos-26' }}
     timeout-minutes: 40
     env:
       APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
@@ -188,7 +193,7 @@ jobs:
   screenshots:
     if: github.event_name == 'workflow_dispatch' && inputs.target == 'screenshots'
     needs: test
-    runs-on: macos-26
+    runs-on: ${{ inputs.runner || 'macos-26' }}
     timeout-minutes: 40
     env:
       # Every `-UNFAT_SCREEN` route to capture, in order. Later tasks append names here.
