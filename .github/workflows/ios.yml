@@ -184,8 +184,10 @@ jobs:
           # xcodebuild only prints "Authentication failed"; the real reason is in the distribution logs.
           for f in $(find /var/folders "$TMPDIR" -name "*.xcdistributionlogs" -maxdepth 6 2>/dev/null); do
             echo "== $f"; ls "$f"
-            grep -h -i -E "error|fail|status|denied|forbidden|401|403|not allowed|certificate|profile" "$f"/*.log 2>/dev/null \
-              | sed -E 's/(Bearer|Authorization:?) +[^ "]+/\1 [redacted]/g; s/eyJ[A-Za-z0-9._-]+/[jwt]/g' | tail -n 80 || true
+            for log in IDEDistribution.critical.log IDEDistribution.standard.log; do
+              echo "-- $log"
+              sed -E 's/(Bearer|Authorization:?) +[^ "]+/\1 [redacted]/g; s/eyJ[A-Za-z0-9._-]+/[jwt]/g; s/"profileContent" : "[^"]*"/"profileContent" : "[cut]"/' "$f/$log" | cut -c1-400 | tail -n 150 || true
+            done
           done
       - name: Upload IPA
         if: inputs.target == 'device-ipa'
