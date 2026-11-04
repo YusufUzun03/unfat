@@ -21,9 +21,9 @@ on:
         options: [compile, device-ipa, testflight, screenshots]
         default: compile
       runner:
-        description: macOS image (macos-15 has Xcode 26.3 and is a fallback when macos-26 has no capacity)
+        description: macOS image (macos-26-intel is x64 with the same Xcode, for when arm64 has no capacity)
         type: choice
-        options: [macos-26, macos-15]
+        options: [macos-26, macos-26-intel, macos-15]
         default: macos-26
 
 permissions:
